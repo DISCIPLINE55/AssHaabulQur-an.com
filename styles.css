@@ -1,0 +1,760 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    width: 100%;
+    background: #e2eaf4;
+    max-width: 5000px;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5vw 3vw;
+    background: #1c1c1c;
+}
+
+
+.logo img {
+    max-height: 70px; /* Adjust height */
+    width: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensures it doesn't get stretched */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 2vw;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5vw;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f39c12;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 3vw;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Responsive Navbar */
+@media screen and (max-width: 1024px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #1c1c1c;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Search Container */
+.search-container {
+    width: 20vw;
+    margin-right: -15vw;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 1vw;
+    font-size: 1.2vw;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Responsive Search */
+@media screen and (max-width: 768px) {
+    .search-container {
+        width: 100%;
+        text-align: center;
+        margin: 1vw auto;
+    }
+
+    .search-container input {
+        width: 90%;
+    }
+}
+
+/* Hero Section */
+.hero {
+    background: url('images/bg.png') center/cover no-repeat;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 2vw;
+}
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 5vw;
+    border-radius: 10px;
+}
+
+.hero h1 {
+    font-size: 4vw;
+    margin-bottom: 1vw;
+}
+
+.hero p {
+    font-size: 2vw;
+    margin-bottom: 2vw;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1.2vw 2.5vw;
+    background: #06a761;
+    color: black;
+    font-size: 2vw;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ff9800;
+}
+
+/* Courses Section */
+.featured-courses {
+    text-align: center;
+    padding: 5vw;
+    background: #def6fc;
+}
+
+.featured-courses h2 {
+    font-size: 3vw;
+    color: #333;
+    margin-bottom: 2vw;
+}
+
+/* Course Container */
+.courses-container {
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+    flex-wrap: wrap;
+}
+
+/* Course Styling */
+.course {
+    background: white;
+    padding: 2vw;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 320px;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+}
+
+.course img {
+    width: 100%;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.course h3 {
+    font-size: 2vw;
+    color: #333;
+    margin: 1vw 0;
+}
+
+.course p {
+    font-size: 1.5vw;
+    color: #555;
+    margin-bottom: 1vw;
+}
+
+/* Enroll Button */
+.enroll-btn {
+    background: #009688;
+    color: white;
+    padding: 1.5vw;
+    margin-top: 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 2vw;
+    transition: background 0.3s;
+}
+
+.enroll-btn:hover {
+    background: #00796b;
+}
+
+
+
+.surah-list{
+    padding-top: 10%;
+}
+
+h1{
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.surah-item {
+    list-style: none;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.surah-item a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 18px;
+}
+
+.surah-item:hover {
+    background: #f1f1f1;
+}
+
+
+
+#dailyAyahSection {
+    width: 100%;
+    background: #f8f9fa;
+    padding: 15px;
+    border-left: 5px solid #008000;
+    font-style: italic;
+    text-align: center;
+}
+
+
+
+#duaSection {
+    width: 100%;
+    max-width: 1200px; /* Ensures responsiveness */
+    text-align: center;
+    margin-top: 20px;
+    background: #def6fc;
+    padding: 20px;
+    padding-top: 50px;
+    border-radius: 8px;
+    line-height: 25px;
+    padding-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dua {
+    background: #def6fc;
+    padding: 15px;
+    margin: 10px auto;
+    border-radius: 5px;
+    max-width: 600px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+}
+.banner {
+    padding-top: 10px;
+    width: 100%;
+    height: auto;
+}
+
+.arabic {
+    padding-top: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #009688;
+}
+
+.transliteration, .meaning {
+    font-style: italic;
+    margin-top: 5px;
+}
+
+
+/* Teachers Section */
+#teachers {
+    width: 100%;
+    text-align: center;
+    padding: 100px 20px;
+    background: #def6fc; /* Light background for contrast */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    max-width: 1200px;
+}
+
+#teachers h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+#teachers p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+
+/* live studies */
+#live-studies {
+    width: 100%;
+    text-align: center;
+    padding: 50px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+#live-studies h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+#live-studies p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+#live-studies button {
+    background: #009688;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#live-studies button:hover {
+    background: #00796b;
+}
+
+
+
+
+/* Testimonials */
+#testimonials {
+    width: 100%;
+    max-width: 95%; /* Ensures responsiveness */
+    text-align: center;
+    margin-top: 4vw;
+    background: #def6fc;
+    padding: 2vw;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4vw;
+}
+
+
+
+.testimonial {
+    background: #def6fc;
+    padding: 15px;
+    margin: 10px auto;
+    max-width: 500px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    font-style: italic;
+}
+
+.testimonial img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.testimonial h4 {
+    margin-top: 10px;
+    color: #009688;
+    font-weight: bold;
+}
+
+
+/* Styling for Ask a Scholar section */
+#askScholar {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    background: #def6fc;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px; /* Ensures responsiveness */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#askScholar h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+/* Form container */
+#scholarForm {
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+#scholarForm label {
+    font-weight: bold;
+    margin-top: 12px;
+    text-align: left;
+}
+
+/* Input and textarea */
+#scholarForm input, 
+#scholarForm textarea {
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#scholarForm textarea {
+    height: 120px;
+    resize: none;
+}
+
+/* Submit button */
+#scholarForm button {
+    background: #009688;
+    color: white;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#scholarForm button:hover {
+    background: #00796b;
+}
+
+
+/* Blog Section */
+#islamicBlog {
+    width: 100%;
+    text-align: center;
+    max-width: 1200px; /* Ensures responsiveness */
+    padding: 2vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+#islamicBlog h2 {
+    color: #009688;
+    margin-bottom: 10px;
+}
+
+#islamicBlog p {
+    color: #555;
+    margin-bottom: 20px;
+}
+.blog-post {
+    background: #def6fc;
+    padding: 2vw;
+    border-radius: 5px;
+    margin: auto;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post h3 {
+    line-height: 15vh;
+    color: #009688;
+}
+
+.blog-post p {
+    color: #555;
+}
+
+.blog-post a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #00796b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.blog-post a:hover {
+    text-decoration: underline;
+}
+
+/* FAQ Section */
+#faq {
+    width: 100%;
+    max-width: 95%;
+    text-align: center;
+    padding: 2vw;
+    background: #def6fc;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.faq-item {
+    margin: 10px 0;
+    width: 100%; /* Ensures it takes full width */
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: #009688;
+    color: white;
+    padding: 15px; /* Increase padding for better appearance */
+    border: none;
+    cursor: pointer;
+    font-size: 18px; /* Slightly bigger font */
+    border-radius: 5px;
+    display: block; /* Ensures it stretches full width */
+}
+
+.faq-answer {
+    display: none;
+    width: 100%;
+    padding: 15px;
+    background: #def6fc;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Make sure the FAQ container takes full width */
+#faq {
+    width: 100%;
+    max-width: 1200px; /* Set a max width for larger screens */
+    margin: auto;
+    padding: 20px;
+    background: #def6fc;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Contact Section */
+#contact {
+    width: 100%;
+    max-width: 1200px;
+    margin: 5vw auto;
+    padding: 2.5vw;
+    text-align: center;
+    background: #def6fc;
+    border-radius: 8px;
+}
+
+.contact h2 {
+    color: #009688;
+    margin-bottom: 10px;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact-form label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#contact-form input, #contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#contact-form button {
+    margin-top: 15px;
+    padding: 10px;
+    background: #ffa500;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#contact-form button:hover {
+    background: #009688;
+}
+
+.contact-info {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+/* Footer */
+footer {
+    background: url('images/footer.png') center/cover no-repeat;
+    color: white;
+    padding: 4vw 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2vw;
+    border-radius: 10px;
+}
+
+
+.footer-container div {
+    flex: 1;
+    padding: 20px;
+    min-width: 250px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 8px 0;
+}
+
+.footer-links ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Logo */
+.footer-about img {
+    max-width: 150px; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Space below logo */
+}
+
+.footer-bottom {
+    margin-top: 5px;
+    background: #111;
+    padding: 10px 0;
+}
+
+/* Back to Top Button */
+#backToTop {
+    position: fixed;
+    bottom: 2vw;
+    right: 2vw;
+    background-color: #def6fc;
+    color: black;
+    border: none;
+    padding: 1vw 1.5vw;
+    font-size: 1.5vw;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+}
+
+#backToTop:hover {
+    background-color: #009688;
+}
+
+
+
+/* Custom Scrollbar for Modern Browsers */
+::-webkit-scrollbar {
+    width: 8px; /* Scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+    background: #ffda07; /* Light background */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #007bff; /* Blue scrollbar */
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #f4bc05; 
+}
+
+/* Firefox Custom Scrollbar */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #ffd000 #0b0000;
+}
+
+/* Ensure smooth scrolling for entire page */
+html, body {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+}
+
+/* Dark Mode Scrollbar */
+.dark-mode ::-webkit-scrollbar-thumb {
+    background: #444; /* Dark mode scrollbar */
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: #222;
+}
+
+.dark-mode html {
+    scrollbar-color: #444 #222;
+}

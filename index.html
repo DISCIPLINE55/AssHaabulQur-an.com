@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>As-haabul-Qura'n</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="liveclass.js" defer></script>
+    <script src="enrollment.js" defer></script>
+    <script src="courses.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="images/logo2.png" alt="ASS-HAABUL-QURA’N"></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#surahList">Surahs</a></li>
+                <li><a href="#duaSection">Dua</a></li>
+                <li><a href="#live-studies">Live Classes</a></li>
+                <li><a href="#islamicBlog">Islamic Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#courses" class="nav-btn">Login</a></li>
+                <li class="search-container"><input type="text" id="searchInput" placeholder="Search Surahs..." onkeyup="searchSurahs()"></li>
+            </ul>
+            <div >
+                
+            </div>
+            
+            <div class="menu-toggle" onclick="toggleMenu()"> ☰ </div>
+        </nav>
+        
+    </header>
+
+     <div id="dailyAyahSection">
+            <h2>📜 Daily Ayah</h2>
+            <p id="dailyAyah"></p>
+        </div>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Learn & Master the Quran</h1>
+            <p>Join thousands of learners worldwide in understanding the words of Allah.</p>
+            <a href="#" class="btn">Start Learning Now</a>
+        </div>
+        
+    </section>
+
+    <section class="featured-courses" id="courses">
+        <h2>Our Featured Quran Courses</h2>
+        <div class="courses-container">
+            <div class="course" id="tajweed">
+                <img src="images/good.png" alt="Tajweed Course">
+                <h3>Tajweed Mastery</h3>
+                <p>Learn the rules of proper Quranic recitation with Tajweed.</p>
+                <button class="enroll-btn" onclick="enrollCourse('tajweed')">Enroll Now</button>
+            </div>
+
+            <div class="course" id="memorization">
+                <img src="images/img1.png" alt="Memorization Course">
+                <h3>Quran Memorization</h3>
+                <p>Step-by-step guidance to help you memorize the Quran easily.</p>
+                <button class="enroll-btn" onclick="enrollCourse('memorization')">Enroll Now</button>
+            </div>
+
+            <div class="course" id="tafseer">
+                <img src="images/allah.png" alt="Tafseer Course">
+                <h3>Tafseer Quran</h3>
+                <p>Deepen your understanding of the Quran with Tafseer lessons.</p>
+                <button class="enroll-btn" onclick="enrollCourse('tafseer')">Enroll Now</button>
+            </div>
+        </div>
+    </section>
+    
+    
+
+
+    <section>
+        <div class="surah-list">
+            <ul id="surahList">
+                <h1>Click On A Surah To Start Exploring</h1>
+                <!-- More Surahs -->
+            </ul>
+            
+            <audio id="audioPlayer" controls style="display:none;"></audio>
+            
+        </div>
+        
+    </section>
+
+
+
+    <div id="duaSection">
+        <h2> <em>Daily Duas & Supplications</em>🤲</h2>
+        <div class="banner"><img src="images/duaP.png" alt="duaP" width="100px" height="100px"></div>
+        <div class="dua">
+            <h3>Dua Before Sleeping</h3>
+            <p class="arabic">اللَّهُمَّ بِاسْمِكَ أَمُوتُ وَأَحْيَا</p>
+            <p class="transliteration">Allahumma bismika amutu wa ahya</p>
+            <p class="meaning">O Allah, in Your name I die and live.</p>
+        </div>
+    
+        <div class="dua">
+            <h3>Dua for Forgiveness</h3>
+            <p class="arabic">رَبِّ اغْفِرْ لِي وَتُبْ عَلَيَّ إِنَّكَ أَنتَ التَّوَّابُ الرَّحِيمُ</p>
+            <p class="transliteration">Rabbighfir li wa tub 'alayya innaka anta At-Tawwab Ar-Raheem</p>
+            <p class="meaning">My Lord, forgive me and accept my repentance. Indeed, You are the Accepting of Repentance, the Merciful.</p>
+        </div>
+    </div>
+    
+
+    <section id="teachers">
+        <h2>Meet Our Teachers</h2>
+        <p>Experienced Quran instructors to guide your journey.</p>
+    </section>
+    
+    
+    <section id="live-studies">
+        <h2>Live Studies</h2>
+        <p>Join our live Quran classes and discussions.</p>
+        <button>Join Live Session</button>
+
+
+        <div id="askScholar">
+            <h2>📩 Ask a Scholar</h2>
+            <p>Have any Islamic questions? Submit your question, and a scholar will respond.</p>
+        
+            <form id="scholarForm">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+        
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+        
+                <label for="question">Your Question:</label>
+                <textarea id="question" placeholder="Type your question here..." required></textarea>
+        
+                <button type="submit">Submit</button>
+            </form>
+        
+            <p id="confirmationMessage" style="display: none; color: green;">✅ Your question has been submitted!</p>
+        </div>
+        
+    </section>
+
+    <section>
+        <div id="islamicBlog">
+            <h2>📝 Islamic Blog</h2>
+            <p>Read insightful articles about Islam, the Quran, and daily life.</p>
+        
+            <div class="blog-post">
+                <h3>📖 Importance of the Quran in Our Daily Lives</h3>
+                <p>The Quran is a guide for mankind, teaching us how to live a righteous life...</p>
+                <a href="#">Read More</a>
+            </div>
+        
+            <div class="blog-post">
+                <h3>☪️ 5 Daily Habits of a Practicing Muslim</h3>
+                <p>Incorporating Islamic teachings into daily routines helps strengthen faith...</p>
+                <a href="#">Read More</a>
+            </div>
+        
+            <div class="blog-post">
+                <h3>🤲 The Power of Du'a (Supplication)</h3>
+                <p>Making du'a connects us to Allah, seeking His guidance and mercy...</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+        
+    </section>
+
+    <section class="testimonials">
+        <div id="testimonials">
+            <h2>🗣️ What Our Students Say</h2>
+        
+            <div class="testimonial">
+                <img src="student1.jpg" alt="Student 1">
+                <p>“This platform has helped me memorize more surahs with ease! Alhamdulillah!”</p>
+                <h4>- Aisha Mohammed</h4>
+            </div>
+        
+            <div class="testimonial">
+                <p>“The lessons are well-structured and easy to follow. May Allah bless this initiative.”</p>
+                <h4>- Yusuf Ibrahim</h4>
+            </div>
+        
+            <div class="testimonial">
+                <p>“I love how interactive the platform is. It feels like a real classroom experience.”</p>
+                <h4>- Fatima Ali</h4>
+            </div>
+
+            <div class="testimonial">
+                <p>"This platform has truly helped me improve my Quran recitation. Highly recommended!"</p>
+                <h4>— Ahmed Al-Hassan</h4>
+            </div>
+        
+            <div class="testimonial">
+                <p>"The Tajweed lessons are so easy to follow. I love the interactive learning!"</p>
+                <h4>— Fatima Mohammed</h4>
+            </div>
+        
+            <div class="testimonial">
+                <p>"A wonderful platform for beginners and advanced learners alike!"</p>
+                <h4>— Yusuf Rahman</h4>
+            </div>
+
+            <div class="testimonial">
+                <p>“This platform has helped me improve my Quranic recitation. The lessons are well-structured and easy to follow.”</p>
+                <h4>- Amina Abdulrahman</h4>
+            </div>
+        
+            <div class="testimonial">
+                <p>“Learning with As-haabul-qura’n has been an amazing journey. The tutors are very knowledgeable.”</p>
+                <h4>- Bilal Mohammed</h4>
+            </div>
+        
+            <div class="testimonial">
+                <p>“I love how I can study at my own pace. The quizzes and exercises help reinforce what I learn.”</p>
+                <h4>- Fatimah Yusuf</h4>
+            </div>
+
+            <div class="testimonial">
+                <p>“I love the flexibility of the courses. I can study at my own pace and still get guidance when needed.”</p>
+                <h4>- Omar Farouk</h4>
+            </div>
+        </div>
+        
+    </section>
+
+
+
+
+    <section>
+        <div id="faq">
+            <h2>❓ Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <button class="faq-question">What is As-haabul-Qura’n? <span>+</span></button>
+                <div class="faq-answer">
+                    <p>As-haabul-Qura’n is an online platform dedicated to teaching the Quran with proper recitation, memorization, and understanding.</p>
+                </div>
+            </div>
+        
+            <div class="faq-item">
+                <button class="faq-question">How do I enroll in a Quran class? ⬇</button>
+                <p class="faq-answer">Simply sign up, choose a class, and start learning at your own pace!</p>
+            </div>
+        
+            <div class="faq-item">
+                <button class="faq-question">Is this platform free? ⬇</button>
+                <p class="faq-answer">Yes! The basic Quran lessons are free. Advanced features may require a small fee.</p>
+            </div>
+        
+            <div class="faq-item">
+                <button class="faq-question">Can I track my progress? ⬇</button>
+                <p class="faq-answer">Yes! Your dashboard will show completed lessons and your memorization progress.</p>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">📌 Can I learn at my own pace?</button>
+                <p class="faq-answer">Absolutely! You can study whenever it’s convenient for you.</p>
+            </div>
+        
+            <div class="faq-item">
+                <button class="faq-question">📌 Will I get a certificate after completion?</button>
+                <p class="faq-answer">Yes! Upon completing a course, you will receive a certificate of achievement.</p>
+            </div>
+        </div> 
+    </section>
+
+    <section class="contact" id="contact">
+        <div id="contact">
+            <h2>📩 Contact Us</h2>
+        
+            <p>If you have any questions, feel free to reach out to us.</p>
+        
+            <form id="contact-form">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+        
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+        
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" required></textarea>
+        
+                <button type="submit">Send Message</button>
+            </form>
+        
+            <div class="contact-info">
+                <p>📍 Location: Gomoa Gyaman, Ghana</p>
+                <p>📞 Phone: +233 55 885 2609</p>
+                <p>📞 Phone: +233 54 772 4646</p>
+                <p>📧 Email: info@ashaabulquran.com</p>
+            </div>
+        </div>
+    </section>
+
+        <footer>
+            
+            <div class="footer-container">
+                <div class="footer-about">
+                    <img src="images/logo2.png" alt="As-haabul-Qura'n">
+                    <h3>About As-haabul-Qura'n</h3>
+                    <p>Providing easy access to Quranic studies for everyone. Join us in learning and growing together.</p>
+                </div>
+        
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+        
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p>📞 Phone: +233 53 777 0000</p>
+                    <p>📞 Phone: +33 4 772 2246</p>
+                    <p>📧 info@ashaabulquran.com</p>
+                    <p>📍 Mankessim, Central Ghana</p>
+                </div>
+            </div>
+        
+            <div class="footer-bottom">
+                <p>© 2025 Ass-haabul-Qura'n. All rights reserved.</p>
+            </div>
+        </footer>
+        <button id="backToTop">↑TOP</button>
+
+</body>
+</html>

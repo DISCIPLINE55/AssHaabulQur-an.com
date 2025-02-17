@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Surah Details</title>
+        <link rel="stylesheet" href="surah.css">
+    </head>
+<body>
+ 
+    <div id="mainContainer">
+    
+        <div id="fullSurahSection">
+            <h1>📖 Quran Explorer</h1>
+        
+           
+             <!-- Full Surah Audio Player -->
+            <a href="/index.html"><button id="goHomeButton">🏠 Home</button></a>
+            <a href="#verseContainer"><button id="goSurahButton">📜Surah</button></a><label for="themeToggle">Dark Mode:</label>
+            <input type="checkbox" id="themeToggle">
+            <h3>Full Surah Recitation</h3>
+            <br>
+            <label for="surahSelector">Select Surah:</label>
+            <select id="surahSelector"></select><br>
+            <audio id="fullSurahAudio" controls></audio>
+            <br>
+            <button id="playFullSurah">▶️ Play</button>
+            <button id="pauseFullSurah">⏸ Pause</button>
+            <button id="stopFullSurah">⏹ Stop</button>
+            <br>
+            <label>
+                <input type="checkbox" id="backgroundAudioToggle"> Enable Background Audio
+            </label>
+            <br>
+            
+        </div>
+
+        <!-- Verses List -->
+        <div id="verseContainer">
+            <h2>📜 Verses</h2>
+                <!-- Surah Details -->
+                <h1 id="surahTitle">Surah Details</h1>
+                <h3 id="surahTranslation"></h3>
+                <p id="revelationType"></p>
+                <p id="surahDescription"></p>
+                <ul id="verseList"></ul> <!-- This is where verses will be loaded dynamically -->
+        </div>
+
+        <!-- Audio Player for Verses -->
+        <audio id="verseAudioPlayer"></audio>
+
+        <!-- Tafsir Section -->
+        <div id="tafsirSection">
+            <h2>📖 Tafsir (Exegesis)</h2>
+            <select id="tafsirSelect">
+                <option value="tafsir-fatiha">Tafsir Al-Fatiha</option>
+                <option value="tafsir-baqarah">Tafsir Al-Baqarah (Verse 1-5)</option>
+                <option value="tafsir-imran">Tafsir Aal-e-Imran (Verse 1-5)</option>
+            </select>
+            <div id="tafsirContent">
+                <p>Select a Surah to read its Tafsir.</p>
+            </div>
+        </div>
+
+        <script src="surah.js"></script>
+        <script src="player.js"></script>
+        <button id="backToTop">↑TOP</button>
+    </div>
+    
+</body>
+</html>
