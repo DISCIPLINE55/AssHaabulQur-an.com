@@ -1,3 +1,22 @@
+let mediaRecorder;
+let recordedChunks = {};
+let speechRecognition;
+let recognitionActive = false;
+
+
+async function getMicrophoneAccess() {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        return stream;
+    } catch (error) {
+        console.error("Microphone access denied:", error);
+        alert("Please allow microphone access to record your recitation.");
+        return null;
+    }
+}
+
+
+
 document.addEventListener("DOMContentLoaded", async function () { 
     const urlParams = new URLSearchParams(window.location.search);
     const surahNumber = urlParams.get("surah");
@@ -51,11 +70,15 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <button class="play-audio btn-small" data-audio="${audioUrl}">🔊</button>
                 <button class="pause-audio btn-small">⏸</button>
                 <button class="repeat-audio btn-small" data-audio="${audioUrl}">🔁</button>
-                <button class="mark-memorized btn-small" data-ayah="${ayah.numberInSurah}">${isMemorized}</button>
-                <button class="bookmark-verse btn-small" data-ayah="${ayah.number}">${isBookmarked}</button>
+                <button class="record-audio btn-small" data-ayah="${ayah.numberInSurah}">🎙 Record</button>
+                <button class="play-recording btn-small" data-ayah="${ayah.numberInSurah}" disabled>▶ Play Recording</button>
+                <button class="delete-recording btn-small" data-ayah="${ayah.numberInSurah}" disabled>🗑 Delete Recording</button>
+                <button class="check-pronunciation btn-small" data-ayah="${ayah.numberInSurah}" disabled>🔍 Check Pronunciation</button>
+                <button class="mark-memorized btn-small" data-ayah="${ayah.numberInSurah}">🔒 Not Memorized</button>
                 <hr>
-            `;
+                `;
             verseList.appendChild(verseItem);
+    
         });
 
         let verseAudioPlayer = document.getElementById("verseAudioPlayer");
@@ -95,27 +118,158 @@ document.addEventListener("DOMContentLoaded", async function () {
             });
         });
 
+        document.querySelectorAll(".record-audio").forEach(button => {
+            button.addEventListener("click", function () {
+                let ayahNumber = this.getAttribute("data-ayah");
+
+                if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                    alert("Recording is not supported in this browser.");
+                    return;
+                }
+
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(stream => {
+                        mediaRecorder = new MediaRecorder(stream);
+                        recordedChunks[ayahNumber] = [];
+
+                        mediaRecorder.ondataavailable = event => {
+                            if (event.data.size > 0) {
+                                recordedChunks[ayahNumber].push(event.data);
+                            }
+                        };
+
+                        mediaRecorder.onstop = () => {
+                            document.querySelector(`.play-recording[data-ayah="${ayahNumber}"]`).disabled = false;
+                            document.querySelector(`.delete-recording[data-ayah="${ayahNumber}"]`).disabled = false;
+                        };
+
+                        mediaRecorder.start();
+                        setTimeout(() => mediaRecorder.stop(), 10000); // Stop after 10 seconds
+                    })
+                    .catch(error => console.error("Recording error:", error));
+            });
+        });
+
+        document.querySelectorAll(".play-recording").forEach(button => {
+            button.addEventListener("click", function () {
+                let ayahNumber = this.getAttribute("data-ayah");
+
+                if (!recordedChunks[ayahNumber] || recordedChunks[ayahNumber].length === 0) {
+                    alert("No recording available for this verse.");
+                    return;
+                }
+
+                let recordedBlob = new Blob(recordedChunks[ayahNumber], { type: "audio/webm" });
+                let recordedUrl = URL.createObjectURL(recordedBlob);
+                verseAudioPlayer.src = recordedUrl;
+                verseAudioPlayer.play();
+            });
+        });
+
+        document.querySelectorAll(".delete-recording").forEach(button => {
+            button.addEventListener("click", function () {
+                let ayahNumber = this.getAttribute("data-ayah");
+
+                if (recordedChunks[ayahNumber]) {
+                    delete recordedChunks[ayahNumber];
+                }
+
+                document.querySelector(`.play-recording[data-ayah="${ayahNumber}"]`).disabled = false;
+                document.querySelector(`.delete-recording[data-ayah="${ayahNumber}"]`).disabled = false;
+
+                alert("Recording deleted.");
+            });
+        });
+        
+
+
+        // Check Pronunciation
+
+        document.querySelector("click", function (event) {
+            if (event.target.classList.contains("check-pronunciation")) {
+                const ayahNumber = event.target.getAttribute("data-ayah");
+                const ayahElement = document.querySelector(`.ayah-text[data-ayah="${ayahNumber}"]`);
+                
+                if (!ayahElement) {
+                    alert("Verse not found.");
+                    return;
+                }
+        
+                const ayahText = ayahElement.innerText.trim();
+                const words = ayahText.split(" ");
+        
+                if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+                    alert("Speech recognition is not supported in your browser.");
+                    return;
+                }
+        
+                let speechRecognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+                speechRecognition.lang = "ar-SA";
+                speechRecognition.continuous = false;
+                speechRecognition.interimResults = false;
+        
+                speechRecognition.onresult = function (event) {
+                    const transcript = event.results[0][0].transcript.trim();
+                    const userWords = transcript.split(" ");
+                    let highlightedText = "";
+        
+                    words.forEach((word, index) => {    
+                        if (userWords[index]) {
+                            const similarity = getSimilarity(userWords[index], word);
+        
+                            if (similarity >= 0.9) {
+                                highlightedText += `<span style="background-color: yellow;">${word}</span> `;
+                            } else if (similarity >= 0.7) {
+                                highlightedText += `<span class="retry-word" style="background-color: orange; cursor: pointer;" data-word="${word}">${word}</span> `;
+                            } else {
+                                highlightedText += `<span class="retry-word" style="background-color: red; cursor: pointer;" data-word="${word}">${word}</span> `;
+                            }
+                        } else {
+                            highlightedText += `<span style="background-color: red;">${word}</span> `;
+                        }
+                    });
+        
+                    ayahElement.innerHTML = highlightedText;
+                };
+        
+                speechRecognition.onerror = function (event) {
+                    alert("Speech recognition error: " + event.error);
+                };
+        
+                speechRecognition.start();
+            }
+        });
+        
+        // Handle retry clicking
+        document.addEventListener("click", function (event) {
+            if (event.target.classList.contains("retry-word")) {
+                alert(`Try pronouncing "${event.target.dataset.word}" again.`);
+            }
+        });
+        
+        // Mark as Memorized
         document.querySelectorAll(".mark-memorized").forEach(button => {
             button.addEventListener("click", function () {
                 let ayahNumber = parseInt(this.getAttribute("data-ayah"));
                 let memorizedVerses = JSON.parse(localStorage.getItem(`memorizedSurah${surahNumber}`)) || [];
-
+        
                 if (memorizedVerses.includes(ayahNumber)) {
                     memorizedVerses = memorizedVerses.filter(num => num !== ayahNumber);
                 } else {
                     memorizedVerses.push(ayahNumber);
                 }
-
+        
                 localStorage.setItem(`memorizedSurah${surahNumber}`, JSON.stringify(memorizedVerses));
                 location.reload();
             });
         });
-
+        
+        // Bookmark Ayah
         document.querySelectorAll(".bookmark-verse").forEach(button => {
             button.addEventListener("click", function () {
                 let ayahNumber = this.getAttribute("data-ayah");
                 let bookmarkedVerses = JSON.parse(localStorage.getItem("bookmarkedVerses")) || {};
-
+        
                 if (bookmarkedVerses[ayahNumber]) {
                     delete bookmarkedVerses[ayahNumber];
                 } else {
@@ -125,12 +279,27 @@ document.addEventListener("DOMContentLoaded", async function () {
                         text: this.parentElement.querySelector("p[style]").innerText // Get Arabic text
                     };
                 }
-
+        
                 localStorage.setItem("bookmarkedVerses", JSON.stringify(bookmarkedVerses));
                 location.reload();
             });
         });
-
+        
+        // Function to Check Word Similarity (You Need to Implement This)
+        function getSimilarity(word1, word2) {
+            word1 = word1.toLowerCase();
+            word2 = word2.toLowerCase();
+        
+            let matches = 0;
+            const minLength = Math.min(word1.length, word2.length);
+        
+            for (let i = 0; i < minLength; i++) {
+                if (word1[i] === word2[i]) matches++;
+            }
+        
+            return matches / Math.max(word1.length, word2.length);
+        }
+        
         const fullSurahAudioPlayer = document.getElementById("fullSurahAudio");
         fullSurahAudioPlayer.src = fullSurahAudioUrl;
 
