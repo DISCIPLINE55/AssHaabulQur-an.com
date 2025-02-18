@@ -67,18 +67,21 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <p style="font-size: 20px; direction: rtl;">${ayah.text}</p> <!-- Arabic -->
                 <p><em>Transliteration:</em> ${transliterationText}</p> 
                 <p><strong>Translation:</strong> ${translationText}</p> 
-                <button class="play-audio btn-small" data-audio="${audioUrl}">🔊</button>
-                <button class="pause-audio btn-small">⏸</button>
-                <button class="repeat-audio btn-small" data-audio="${audioUrl}">🔁</button>
-                <button class="record-audio btn-small" data-ayah="${ayah.numberInSurah}">🎙 Record</button>
-                <button class="play-recording btn-small" data-ayah="${ayah.numberInSurah}" disabled>▶ Play Recording</button>
-                <button class="delete-recording btn-small" data-ayah="${ayah.numberInSurah}" disabled>🗑 Delete Recording</button>
-                <button class="check-pronunciation btn-small" data-ayah="${ayah.numberInSurah}" disabled>🔍 Check Pronunciation</button>
-                <button class="mark-memorized btn-small" data-ayah="${ayah.numberInSurah}">🔒 Not Memorized</button>
+
+                <!-- Button Container -->
+                <div class="button-container">
+                    <button class="play-audio btn-small" data-audio="${audioUrl}">🔊</button>
+                    <button class="pause-audio btn-small">⏸</button>
+                    <button class="repeat-audio btn-small" data-audio="${audioUrl}">🔁</button>
+                    <button class="record-audio btn-small" data-ayah="${ayah.numberInSurah}">🎙</button>
+                    <button class="play-recording btn-small" data-ayah="${ayah.numberInSurah}" disabled>▶</button>
+                    <button class="delete-recording btn-small" data-ayah="${ayah.numberInSurah}" disabled>🗑</button>
+                    <button class="check-pronunciation btn-small" data-ayah="${ayah.numberInSurah}" disabled>🔍</button>
+                    <button class="mark-memorized btn-small" data-ayah="${ayah.numberInSurah}">${isMemorized}</button>
+                </div>
                 <hr>
-                `;
+            `;
             verseList.appendChild(verseItem);
-    
         });
 
         let verseAudioPlayer = document.getElementById("verseAudioPlayer");

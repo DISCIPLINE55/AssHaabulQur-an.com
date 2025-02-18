@@ -263,3 +263,42 @@ html, body {
 .dark-mode html {
     scrollbar-color: #444 #222;
 }
+
+
+
+
+.button-container {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Wraps buttons if they don’t fit */
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #83f6d7;
+}
+.btn-small {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px;
+}
+.btn-small:hover {
+    background-color: #f0f0f0;
+}
+
+/* Ensure buttons stay in one line on small screens */
+@media screen and (max-width: 600px) {
+    .button-container {
+        flex-wrap: nowrap; /* Prevent wrapping */
+        overflow-x: auto; /* Enable horizontal scrolling if needed */
+        justify-content: flex-start; /* Align buttons to the left */
+        white-space: nowrap;
+    }
+
+    .btn-small {
+        padding: 4px 6px; /* Make buttons smaller */
+        font-size: 12px;
+    }
+}
