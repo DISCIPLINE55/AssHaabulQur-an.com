@@ -40,7 +40,7 @@ body {
 .nav-links a {
     color: #fff;
     text-decoration: none;
-    font-size: 1.5vw;
+    font-size: 1rem;
     transition: 0.3s;
 }
 
@@ -91,7 +91,7 @@ body {
 .search-container input {
     width: 100%;
     padding: 1vw;
-    font-size: 1.2vw;
+    font-size: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
@@ -128,12 +128,12 @@ body {
 }
 
 .hero h1 {
-    font-size: 4vw;
+    font-size: 2rem;
     margin-bottom: 1vw;
 }
 
 .hero p {
-    font-size: 2vw;
+    font-size: 1rem;
     margin-bottom: 2vw;
 }
 
@@ -142,7 +142,7 @@ body {
     padding: 1.2vw 2.5vw;
     background: #06a761;
     color: black;
-    font-size: 2vw;
+    font-size: 1rem;
     text-decoration: none;
     border-radius: 5px;
     transition: 0.3s;
@@ -160,7 +160,7 @@ body {
 }
 
 .featured-courses h2 {
-    font-size: 3vw;
+    font-size: 2rem;
     color: #333;
     margin-bottom: 2vw;
 }
@@ -191,13 +191,13 @@ body {
 }
 
 .course h3 {
-    font-size: 2vw;
+    font-size: 1.2rem;
     color: #333;
     margin: 1vw 0;
 }
 
 .course p {
-    font-size: 1.5vw;
+    font-size: 1rem;
     color: #555;
     margin-bottom: 1vw;
 }
@@ -211,7 +211,7 @@ body {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 2vw;
+    font-size: 1rem;
     transition: background 0.3s;
 }
 

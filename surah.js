@@ -332,22 +332,64 @@ async function loadSurahOptions() {
         const data = await response.json();
         const surahList = data.data;
 
-        const surahSelector = document.getElementById("surahSelector");
-        surahList.forEach(surah => {
-            let option = document.createElement("option");
-            option.value = surah.number;
-            option.textContent = `${surah.number}. ${surah.englishName} (${surah.name})`;
-            surahSelector.appendChild(option);
+        const surahSearch = document.getElementById("surahSearch");
+        const surahResults = document.getElementById("surahResults");
+
+        // Populate the list with Surahs
+        function populateSurahOptions(filteredSurahs) {
+            surahResults.innerHTML = ""; // Clear previous results
+
+            if (filteredSurahs.length === 0 || surahSearch.value.trim() === "") {
+                surahResults.style.display = "none"; // Hide when no match or empty input
+                return;
+            }
+
+            surahResults.style.display = "block"; // Show when there are matches
+
+            filteredSurahs.forEach(surah => {
+                let listItem = document.createElement("li");
+                listItem.textContent = `${surah.number}. ${surah.englishName} (${surah.name})`;
+                listItem.dataset.surahNumber = surah.number;
+                listItem.classList.add("surah-item"); // For styling
+                surahResults.appendChild(listItem);
+            });
+        }
+
+        populateSurahOptions(surahList); // Initially load all Surahs
+
+        // Search functionality
+        surahSearch.addEventListener("keyup", function () {
+            let searchValue = this.value.toLowerCase();
+
+            let filteredSurahs = surahList.filter(surah =>
+                surah.englishName.toLowerCase().includes(searchValue) ||
+                surah.name.toLowerCase().includes(searchValue)
+            );
+
+            populateSurahOptions(filteredSurahs); // Show only matching Surahs
         });
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const currentSurah = urlParams.get("surah");
-        surahSelector.value = currentSurah;
-
-        surahSelector.addEventListener("change", function () {
-            let selectedSurah = this.value;
-            window.location.href = `surah.html?surah=${selectedSurah}`;
+        // Click event for Surah selection
+        surahResults.addEventListener("click", function (event) {
+            if (event.target.classList.contains("surah-item")) {
+                let selectedSurah = event.target.dataset.surahNumber;
+                window.location.href = `surah.html?surah=${selectedSurah}`;
+            }
         });
+
+        // Hide the list if input is empty or loses focus
+        surahSearch.addEventListener("blur", function () {
+            setTimeout(() => {
+                surahResults.style.display = "none";
+            }, 200); // Short delay to allow clicking
+        });
+
+        surahSearch.addEventListener("focus", function () {
+            if (surahSearch.value.trim() !== "") {
+                surahResults.style.display = "block";
+            }
+        });
+
     } catch (error) {
         console.error("Error loading Surah options:", error);
     }

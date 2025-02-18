@@ -9,31 +9,40 @@
 <body>
  
     <div id="mainContainer">
-    
+
+        <!-- Full Surah Section -->
         <div id="fullSurahSection">
             <h1>📖 Quran Explorer</h1>
         
-           
-             <!-- Full Surah Audio Player -->
-            <a href="/index.html"><button id="goHomeButton">🏠 Home</button></a>
-            <a href="#verseContainer"><button id="goSurahButton">📜Surah</button></a><label for="themeToggle">Dark Mode:</label>
-            <input type="checkbox" id="themeToggle">
+            <!-- Navigation Buttons in a Single Container -->
+            <div class="nav-buttons">
+                <a href="/index.html"><button id="goHomeButton">🏠 Home</button></a>
+                <a href="#verseContainer"><button id="goSurahButton">📜 Surah</button></a>
+                <label for="themeToggle">Dark Mode:</label>
+                <input type="checkbox" id="themeToggle">
+            </div>
+        
             <h3>Full Surah Recitation</h3>
-            <br>
-            <label for="surahSelector">Select Surah:</label>
-            <select id="surahSelector"></select><br>
+        
+            <!-- Surah Search Bar -->
+            <input type="text" id="surahSearch" placeholder="🔍 Search Surah..." onkeyup="filterSurah()">
+            <ul id="surahResults"></ul>
+        
             <audio id="fullSurahAudio" controls></audio>
-            <br>
-            <button id="playFullSurah">▶️ Play</button>
-            <button id="pauseFullSurah">⏸ Pause</button>
-            <button id="stopFullSurah">⏹ Stop</button>
-            <br>
+        
+            <!-- Buttons for Play/Pause/Stop in a Single Container -->
+            <div class="smallButtons">
+                <button id="playFullSurah">▶️ Play</button>
+                <button id="pauseFullSurah">⏸ Pause</button>
+                <button id="stopFullSurah">⏹ Stop</button>
+            </div>
+        
             <label>
                 <input type="checkbox" id="backgroundAudioToggle"> Enable Background Audio
             </label>
-            <br>
-            
         </div>
+        
+                
 
         <!-- Verses List -->
         <div id="verseContainer">

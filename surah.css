@@ -53,31 +53,170 @@ audio {
 
 /* Responsive Buttons */
 button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    margin: 10px 5px;
-    cursor: pointer;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Wraps buttons if they don’t fit */
+    padding: 5px;
     border-radius: 5px;
-    font-size: 1rem;
-    display: inline-block;
-    transition: 0.3s;
+    background-color: #83f6d7;
 }
 
 button:hover {
     background: #0056b3;
 }
 
-#fullSurahSection {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 10px;
-    background: #f8f9fa;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+/* Ensure buttons stay in one line on small screens */  
+@media screen and (max-width: 600px) {
+    .smallButtons {
+        flex-wrap: nowrap; /* Prevent wrapping */
+        overflow-x: auto; /* Enable horizontal scrolling if needed */
+        justify-content: flex-start; /* Align buttons to the left */
+        white-space: nowrap;
+    }
 }
+
+/* Make the fullSurahSection compact and centered */
+/* Style the fullSurahSection container */
+#fullSurahSection {
+    max-width: 400px; /* Keep it compact */
+    margin: 20px auto; /* Center it */
+    padding: 15px;
+    background: #ffffff; /* Clean white background */
+    border-radius: 10px; /* Soft rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    text-align: center; /* Center the text */
+    font-family: Arial, sans-serif; /* Clean font */
+}
+
+/* Style the heading */
+#fullSurahSection h1 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Style navigation buttons container */
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap; /* Ensure responsiveness */
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Style navigation buttons */
+.nav-buttons button {
+    background: #28a745; /* Green */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-buttons button:hover {
+    background: #218838; /* Darker green */
+}
+
+/* Style theme toggle */
+label[for="themeToggle"] {
+    font-size: 14px;
+    margin-left: 5px;
+    color: #555;
+}
+
+/* Style Surah selection dropdown */
+#surahSelector {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Style audio player */
+#fullSurahAudio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Style buttons container */
+.smallButtons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    background: #e9ecef; /* Light grey background */
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Style the play, pause, stop buttons */
+.smallButtons button {
+    background: #007bff; /* Blue */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s ease-in-out;
+}
+
+.smallButtons button:hover {
+    background: #0056b3; /* Darker blue */
+}
+
+/* Style background audio toggle */
+label input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Style the search bar */
+#surahSearch {
+    width: 45%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+
+#surahResults {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 5px;
+    max-height: 100px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: white;
+    display: none; /* Initially hidden */
+    position: absolute; /* Keep it below the search bar */
+    width: 25%;
+    z-index: 1000;
+}
+
+.surah-item {
+    padding: 5px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.surah-item:hover {
+    background-color: #f0f0f0;
+}
+
+
+
 
 #audioRecitation select, #tafsirSelect {
     padding: 8px;
