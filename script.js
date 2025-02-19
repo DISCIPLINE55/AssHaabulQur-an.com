@@ -179,13 +179,6 @@ document.getElementById("scholarForm").addEventListener("submit", function(event
 
 
 
-document.querySelectorAll(".blog-post a").forEach(link => {
-    link.addEventListener("click", function(event) {
-        event.preventDefault();
-        alert("Full article feature coming soon!");
-    });
-});
-
 
 
 
@@ -244,7 +237,5 @@ document.addEventListener("DOMContentLoaded", function () {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 });
-
-
 
 
