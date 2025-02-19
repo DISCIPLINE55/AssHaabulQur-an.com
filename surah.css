@@ -85,7 +85,7 @@ button:hover {
     padding: 10px;
     background: #ffffff; /* Clean white background */
     border-radius: 10px; /* Soft rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    box-shadow: 0 4px 8px rgba(225, 47, 47, 0.2); /* Subtle shadow */
     text-align: center; /* Center the text */
     font-family: Arial, sans-serif; /* Clean font */
 }
@@ -409,20 +409,19 @@ html, body {
 
 .button-container {
     display: flex;
-    gap: 5px;
+    gap: 4px;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap; /* Wraps buttons if they don’t fit */
     padding: 5px;
     border-radius: 5px;
-    background-color: #83f6d7;
 }
 .btn-small {
-    background: none;
+    background: rgb(249, 249, 242);
     border: none;
-    font-size: 18px;
+    font-size: 24px;
     cursor: pointer;
-    padding: 5px;
+    padding: 4px;
 }
 .btn-small:hover {
     background-color: #f0f0f0;

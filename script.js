@@ -239,3 +239,58 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
+
+// Feedback
+document.addEventListener("DOMContentLoaded", function () {
+    const feedbackBtn = document.getElementById("feedbackBtn");
+    const feedbackModal = document.getElementById("feedbackModal");
+    const closeModal = document.querySelector(".close");
+    const feedbackForm = document.getElementById("feedbackForm");
+
+    // Ensure modal is hidden on page load
+    feedbackModal.style.display = "none"; 
+
+    // Show feedback modal
+    feedbackBtn.addEventListener("click", () => {
+        feedbackModal.style.display = "flex";
+    });
+
+    // Close modal
+    closeModal.addEventListener("click", () => {
+        feedbackModal.style.display = "none";
+    });
+
+    // Close modal when clicking outside content
+    window.addEventListener("click", (e) => {
+        if (e.target === feedbackModal) {
+            feedbackModal.style.display = "none";
+        }
+    });
+   
+
+     // Submit feedback and send to WhatsApp Group
+     feedbackForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("userName").value;
+        const email = document.getElementById("userEmail").value;
+        const message = document.getElementById("userMessage").value;
+
+        // WhatsApp Group Chat Link
+        const groupLink = "https://chat.whatsapp.com/Drx3c72aeCIDWM73PpcGvw"; // Your WhatsApp group
+
+        // Construct WhatsApp message
+        const whatsappMessage = `Feedback from ${name}%0AEmail: ${email}%0A%0A${message}`;
+
+        // Open WhatsApp group chat with the message
+        window.open(`https://wa.me/?text=${whatsappMessage}`, "_blank");
+
+        // Close modal after submission
+        feedbackModal.style.display = "none";
+
+        // Reset form
+        feedbackForm.reset();
+    });
+});
