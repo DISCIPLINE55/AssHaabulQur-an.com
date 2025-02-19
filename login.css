@@ -1,0 +1,77 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Login Container */
+.login-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    max-width: 400px;
+    width: 90%;
+}
+
+/* Heading */
+.login-container h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Input Fields */
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Buttons */
+button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Social Login Buttons */
+#google-login {
+    background: #db4437;
+    color: white;
+}
+
+#microsoft-login {
+    background: #0078d4;
+    color: white;
+}
+
+#github-login {
+    background: black;
+    color: white;
+}
+
+#facebook-login {
+    background: #1877f2;
+    color: white;
+}

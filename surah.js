@@ -394,3 +394,12 @@ async function loadSurahOptions() {
         console.error("Error loading Surah options:", error);
     }
 }
+
+
+
+
+
+
+
+
+

@@ -9,11 +9,24 @@
     <script src="liveclass.js" defer></script>
     <script src="enrollment.js" defer></script>
     <script src="courses.js" defer></script>
+    <script src="surahs.js" defer></script>
+    <script src="duas.js" defer></script>
+    <script src="askScholar.js" defer></script>
+    <script src="contact.js" defer></script>   
+    <script src="testimonials.js" defer></script>
+    <script src="faq.js" defer></script>
+    <script src="search.js" defer></script>
+    <script src="dailyAyah.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        if (!localStorage.getItem("loggedInUser")) { // Change 'user' to 'loggedInUser'
+            window.location.href = "login.html"; // Redirect if not logged in
+        }
+    </script>
 </head>
 </head>
 <body>
@@ -25,10 +38,11 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#surahList">Surahs</a></li>
                 <li><a href="#duaSection">Dua</a></li>
+                <li><a href="/hadith.html">Hadith</a></li>
                 <li><a href="#live-studies">Live Classes</a></li>
                 <li><a href="#islamicBlog">Islamic Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#courses" class="nav-btn">Login</a></li>
+                <li><button onclick="logout()" class="logout-btn">Logout</button></li>
                 <li class="search-container"><input type="text" id="searchInput" placeholder="Search Surahs..." onkeyup="searchSurahs()"></li>
             </ul>
             <div >
@@ -114,6 +128,7 @@
             <p class="transliteration">Rabbighfir li wa tub 'alayya innaka anta At-Tawwab Ar-Raheem</p>
             <p class="meaning">My Lord, forgive me and accept my repentance. Indeed, You are the Accepting of Repentance, the Merciful.</p>
         </div>
+        <h2><a href="/dua.html">Click For More Duas</a></h2>
     </div>
     
 
@@ -338,5 +353,13 @@
         </footer>
         <button id="backToTop">↑TOP</button>
 
+        <script>
+            function logout() {
+                localStorage.removeItem("loggedInUser"); // Clear user session
+                alert("Logged out successfully!");
+                window.location.href = "login.html"; // Redirect to login page
+            }
+        </script>
+        
 </body>
 </html>

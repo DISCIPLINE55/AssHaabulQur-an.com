@@ -10,27 +10,46 @@ document.addEventListener("DOMContentLoaded", function () {
     if (courseName === "tajweed") {
         let selectedLevel = localStorage.getItem("tajweedLevel") || "Beginner"; // Default to Beginner
 
-        // Tajweed Course Levels
-        const tajweedLevels = {
-            Beginner: {
-                title: "Beginner Tajweed",
-                content: `<p>Learn the basics of Arabic pronunciation and simple Tajweed rules.</p>
-                          <iframe width="100%" height="315" src="https://www.youtube.com/embed/kklrHE85hHE" frameborder="0" allowfullscreen></iframe>
-                          <p><a href="/pdf/Beginners_tajweed.pdf" download>📄 Download Course Notes</a></p>`
-            },
-            Intermediate: {
-                title: "Intermediate Tajweed",
-                content: `<p>Dive deeper into Makharij (pronunciation) and rules like Ikhfa, Idgham.</p>
-                          <iframe width="100%" height="315" src="https://www.youtube.com/embed/oC_LBcbNCPM" frameborder="0" allowfullscreen></iframe>
-                          <p><a href="/pdf/intermediate-tajweed.pdf" download>📄 Download Course Notes</a></p>`
-            },
-            Advanced: {
-                title: "Advanced Tajweed",
-                content: `<p>Master advanced rules like Qalqalah, Madd, and Tarteel.</p>
-                          <iframe width="100%" height="315" src="https://www.youtube.com/embed/xq4rm8Y-jlI" frameborder="0" allowfullscreen></iframe>
-                          <p><a href="/" download>📄 Download Course Notes</a></p>`
+       // Course Content
+       const tajweedLevels = {
+        Beginner: {
+            title: "Beginner Tajweed",
+            content: `
+                <div class="tajweed-course">
+                    <p>Learn the basics of Arabic pronunciation and simple Tajweed rules.</p>
+                    <div class="tajweed-video-container">
+                        <iframe src="https://www.youtube.com/embed/kklrHE85hHE" allowfullscreen></iframe>
+                    </div>
+                    <p><a href="/pdf/Beginners_tajweed.pdf" download>📄 Download Course Notes</a></p>
+                </div>
+            `
+        },
+        Intermediate: {
+            title: "Intermediate Tajweed",
+            content: `
+                <div class="tajweed-course">
+                    <p>Dive deeper into Makharij (pronunciation) and rules like Ikhfa, Idgham.</p>
+                    <div class="tajweed-video-container">
+                        <iframe src="https://www.youtube.com/embed/oC_LBcbNCPM" allowfullscreen></iframe>
+                    </div>
+                    <p><a href="/pdf/intermediate-tajweed.pdf" download>📄 Download Course Notes</a></p>
+                </div>
+            `
+        },
+        Advanced: {
+            title: "Advanced Tajweed",
+            content: `
+                <div class="tajweed-course">
+                    <p>Master advanced rules like Qalqalah, Madd, and Tarteel.</p>
+                    <div class="tajweed-video-container">
+                        <iframe src="https://www.youtube.com/embed/xq4rm8Y-jlI" allowfullscreen></iframe>
+                    </div>
+                    <p><a href="/" download>📄 Download Course Notes</a></p>
+                </div>
+            `
             }
         };
+    
 
         // Set Course Title & Content
         document.getElementById("course-title").textContent = tajweedLevels[selectedLevel].title;
@@ -60,22 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             buttonContainer.appendChild(levelButton);
         });
-
-        // "Back to Home" Button
-        const homeButton = document.createElement("button");
-        homeButton.textContent = "🏠 Back to Home";
-        homeButton.style.padding = "10px 15px";
-        homeButton.style.border = "none";
-        homeButton.style.cursor = "pointer";
-        homeButton.style.backgroundColor = "#28a745"; // Green color for home button
-        homeButton.style.color = "white";
-        homeButton.style.fontWeight = "bold";
-
-        homeButton.onclick = function () {
-            window.location.href = "index.html";
-        };
-
-        buttonContainer.appendChild(homeButton);
+        
 
         document.getElementById("course-content").appendChild(buttonContainer);
     } 
@@ -121,4 +125,30 @@ function isUserEnrolled(courseName) {
     return enrolledCourses.includes(courseName);
 }
 
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const themeToggle = document.getElementById("toggleTheme");
+    const body = document.body;
+
+    // Check if dark mode was previously enabled
+    if (localStorage.getItem("darkMode") === "enabled") {
+        body.classList.add("dark-mode");
+        themeToggle.textContent = "☀️";
+    }
+
+    // Toggle Dark Mode on Click
+    themeToggle.addEventListener("click", function () {
+        body.classList.toggle("dark-mode");
+
+        // Save User Preference
+        if (body.classList.contains("dark-mode")) {
+            localStorage.setItem("darkMode", "enabled");
+            themeToggle.textContent = "☀️";
+        } else {
+            localStorage.setItem("darkMode", "disabled");
+            themeToggle.textContent = "🌙";
+        }
+    });
+});
 

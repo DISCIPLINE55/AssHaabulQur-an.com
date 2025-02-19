@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ASS-HAABUL-QURAN</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Welcome to ASS-HAABUL-QURAN</h2>
+        <p>Sign in or create an account</p>
+
+        <!-- Email Login/Signup Form -->
+        <form id="email-form">
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <button type="submit">Login / Sign Up</button>
+        </form>
+
+        <p>or continue with</p>
+
+        <!-- Social Login Buttons -->
+        <button id="google-login">Login with Google</button>
+        <button id="microsoft-login">Login with Microsoft</button>
+        <button id="github-login">Login with GitHub</button>
+        <button id="facebook-login">Login with Facebook</button>
+
+        <p id="error-message" style="color: red; display: none;">Invalid credentials. Try again.</p>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

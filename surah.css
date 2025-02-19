@@ -80,9 +80,9 @@ button:hover {
 /* Make the fullSurahSection compact and centered */
 /* Style the fullSurahSection container */
 #fullSurahSection {
-    max-width: 400px; /* Keep it compact */
-    margin: 20px auto; /* Center it */
-    padding: 15px;
+    max-width: 300px; /* Keep it compact */
+    margin: 10px auto; /* Center it */
+    padding: 10px;
     background: #ffffff; /* Clean white background */
     border-radius: 10px; /* Soft rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
@@ -120,7 +120,7 @@ button:hover {
 }
 
 .nav-buttons button:hover {
-    background: #218838; /* Darker green */
+    background: #0b3e16; /* Darker green */
 }
 
 /* Style theme toggle */
@@ -201,7 +201,7 @@ label input[type="checkbox"] {
     background: white;
     display: none; /* Initially hidden */
     position: absolute; /* Keep it below the search bar */
-    width: 25%;
+    width: 20rem;
     z-index: 1000;
 }
 
@@ -240,6 +240,51 @@ label input[type="checkbox"] {
     border-radius: 5px;
     margin-top: 10px;
 }
+
+
+
+/* Tajweed Course Video Styling */
+.tajweed-video-container {
+    position: relative;
+    width: 100%;
+    max-width: 700px; /* Set max width for better layout */
+    margin: 20px auto; /* Center the iframe */
+    overflow: hidden;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+}
+
+.tajweed-video-container iframe {
+    width: 100%;
+    height: 350px;
+    border: none;
+    display: block;
+    border-radius: 10px; /* Rounded edges */
+    transition: transform 0.3s ease-in-out;
+}
+
+.tajweed-video-container iframe:hover {
+    transform: scale(1.02); /* Slight zoom effect on hover */
+}
+
+/* Download Link Styling */
+.tajweed-course a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #0275d8;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.tajweed-course a:hover {
+    background-color: #025aa5;
+    transform: scale(1.05);
+}
+
 
 /* Back to Top Button */
 #backToTop {
