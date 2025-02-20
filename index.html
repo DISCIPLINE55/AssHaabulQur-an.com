@@ -30,7 +30,6 @@
         }
     </script>
 </head>
-</head>
 <body>
 
     <header>
@@ -65,7 +64,7 @@
         <div class="hero-content">
             <h1>Learn & Master the Quran</h1>
             <p>Join thousands of learners worldwide in understanding the words of Allah.</p>
-            <a href="#" class="btn">Start Learning Now</a>
+            <a href="#courses" class="btn">Start Learning Now</a>
         </div>
         
     </section>
@@ -150,7 +149,7 @@
             <h2>📩 Ask a Scholar</h2>
             <p>Have any Islamic questions? Submit your question, and a scholar will respond.</p>
         
-            <form id="scholarForm">
+            <form id="scholarForm" action="https://formspree.io/f/manqvwve" method="POST">
                 <label for="name">Your Name:</label>
                 <input type="text" id="name" placeholder="Enter your name" required>
         
@@ -162,8 +161,12 @@
         
                 <button type="submit">Submit</button>
             </form>
-        
-            <p id="confirmationMessage" style="display: none; color: green;">✅ Your question has been submitted!</p>
+            <div id="loadingMessage" style="display: none; text-align: center;">
+                <p>⏳ Please wait...</p>
+                <div class="spinner"></div>
+            </div>
+            
+            <p id="confirmationMessage" style="display: none; color: green; text-align: center;">✅Your question has been submitted!</p>
         </div>
         
     </section>
@@ -200,52 +203,61 @@
             <h2>🗣️ What Our Students Say</h2>
         
             <div class="testimonial">
-                <img src="student1.jpg" alt="Student 1">
+                <img src="images/sheikh hani.png" alt="Student 1">
                 <p>“This platform has helped me memorize more surahs with ease! Alhamdulillah!”</p>
                 <h4>- Aisha Mohammed</h4>
             </div>
         
             <div class="testimonial">
+                <img src="images/sheikh hani.png" alt="Student 1">
                 <p>“The lessons are well-structured and easy to follow. May Allah bless this initiative.”</p>
                 <h4>- Yusuf Ibrahim</h4>
             </div>
         
             <div class="testimonial">
+                <img src="images/sheikh hani.png" alt="Student 1">
                 <p>“I love how interactive the platform is. It feels like a real classroom experience.”</p>
                 <h4>- Fatima Ali</h4>
             </div>
 
             <div class="testimonial">
+                <img src="images/sheikh hani.png" alt="Student 1">
                 <p>"This platform has truly helped me improve my Quran recitation. Highly recommended!"</p>
                 <h4>— Ahmed Al-Hassan</h4>
             </div>
         
             <div class="testimonial">
+                <img src="images/sheikh hani.png" alt="Student 1">
                 <p>"The Tajweed lessons are so easy to follow. I love the interactive learning!"</p>
                 <h4>— Fatima Mohammed</h4>
             </div>
         
             <div class="testimonial">
+                <img src="images/sheikh hani.png" alt="Student 1">
                 <p>"A wonderful platform for beginners and advanced learners alike!"</p>
                 <h4>— Yusuf Rahman</h4>
             </div>
 
             <div class="testimonial">
+                <img src="images/sheikh hani.png" alt="Student 1">
                 <p>“This platform has helped me improve my Quranic recitation. The lessons are well-structured and easy to follow.”</p>
                 <h4>- Amina Abdulrahman</h4>
             </div>
         
             <div class="testimonial">
+                <img src="images/sheikh hani.png" alt="Student 1">
                 <p>“Learning with As-haabul-qura’n has been an amazing journey. The tutors are very knowledgeable.”</p>
                 <h4>- Bilal Mohammed</h4>
             </div>
         
             <div class="testimonial">
+                <img src="images/sheikh hani.png" alt="Student 1">
                 <p>“I love how I can study at my own pace. The quizzes and exercises help reinforce what I learn.”</p>
                 <h4>- Fatimah Yusuf</h4>
             </div>
 
             <div class="testimonial">
+                <img src="images/sheikh hani.png" alt="Student 1">
                 <p>“I love the flexibility of the courses. I can study at my own pace and still get guidance when needed.”</p>
                 <h4>- Omar Farouk</h4>
             </div>
@@ -300,7 +312,7 @@
         
             <p>If you have any questions, feel free to reach out to us.</p>
         
-            <form id="contact-form">
+            <form id="contact-form" action="https://formspree.io/f/manqvwve" method="POST">
                 <label for="name">Full Name:</label>
                 <input type="text" id="name" name="name" required>
         
@@ -312,6 +324,12 @@
         
                 <button type="submit">Send Message</button>
             </form>
+            <div id="loadingMessage" style="display: none; text-align: center;">
+                <p>⏳ Please wait...</p>
+                <div class="spinner"></div>
+            </div>
+            
+            <p id="confirmationMessage" style="display: none; color: green; text-align: center;"></p>
         
             <div class="contact-info">
                 <p>📍 Location: Gomoa Gyaman, Ghana</p>
@@ -351,29 +369,49 @@
             </div>
 
 
-                        <!-- Floating Feedback Button -->
-            <button id="feedbackBtn">💬 Feedback</button>
+            <!-- Feedback Button -->
+<button id="feedbackBtn">💬</button>
 
-            <!-- Feedback Form Modal -->
-            <div id="feedbackModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h2>Send Us Your Feedback</h2>
-                    <form id="feedbackForm">
-                        <input type="text" id="userName" placeholder="Your Name" required>
-                        <input type="email" id="userEmail" placeholder="Your Email" required>
-                        <textarea id="userMessage" placeholder="Your Feedback" required></textarea>
-                        <button type="submit">Send</button>
-                    </form>
-                </div>
-            </div>
+<!-- Feedback Form Modal -->
+<div id="feedbackModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Send Us Your Feedback</h2>
+        <form id="feedbackForm" action="https://formspree.io/f/manqvwve" method="POST">
+            <label>
+                Your Name:
+                <input type="text" name="name" id="userName" placeholder="Your Name" required>
+            </label>
+            <label>
+                Your Email:
+                <input type="email" name="email" id="userEmail" placeholder="Email" required>
+            </label>
+            <label>
+                Your Message:
+                <textarea name="message" id="userMessage" placeholder="Please type your feedback"></textarea>
+            </label>
+            <button type="submit" id="sendBtn">Send</button>
+        </form>
+
+        <div id="loadingMessage" style="display: none; text-align: center;">
+            <p>⏳ Please wait...</p>
+            <div class="spinner"></div>
+        </div>
+        
+        <p id="confirmationMessage" style="display: none; color: green; text-align: center;"></p>
+    </div>
+    
+</div>
+
+
+
 
                     
             <div class="footer-bottom">
                 <p>© 2025 Ass-haabul-Qura'n. All rights reserved.</p>
             </div>
         </footer>
-        <button id="backToTop">↑TOP</button>
+        <button id="backToTop">🔝</button>
 
         <script>
             function logout() {
@@ -382,6 +420,9 @@
                 window.location.href = "login.html"; // Redirect to login page
             }
         </script>
+       
+       
+        <script src="feedback.js"></script>
         
 </body>
 </html>
