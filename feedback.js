@@ -1,5 +1,5 @@
 // Get elements
-const feedbackBtn = document.getElementById("feedbackBtn");
+const feedbackBtn = document.getElementById("ctaFeedbackBtn");
 const feedbackModal = document.getElementById("feedbackModal");
 const closeModal = document.querySelector(".close");
 const feedbackForm = document.getElementById("feedbackForm");

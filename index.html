@@ -24,6 +24,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
     <script>
         if (!localStorage.getItem("loggedInUser")) { // Change 'user' to 'loggedInUser'
             window.location.href = "login.html"; // Redirect if not logged in
@@ -55,11 +59,23 @@
         
     </header>
 
+      <!-- CTA Section -->
+      <div style="text-align: center; margin-top: 5px; background-color: #f1f1f1; padding: 20px;">
+        <p style="font-size: 20px; font-weight: bold; color: #333;">
+            🌟 We value your feedback! Let us know how we can improve your experience with ASS-HAABUL-QURAN. 💬 <br>
+            Click the button below to share your thoughts with us!
+        </p>
+        <button id="ctaFeedbackBtn" style="background-color: #25D366; color: white; border: none; padding: 10px 15px; border-radius: 5px; font-size: 16px; cursor: pointer;">
+            Share Your Feedback
+        </button>
+    </div>
+
      <div id="dailyAyahSection">
             <h2>📜 Daily Ayah</h2>
             <p id="dailyAyah"></p>
         </div>
 
+         
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Learn & Master the Quran</h1>
@@ -360,43 +376,39 @@
             </div>
 
 
+
             <!-- Feedback Button -->
-<button id="feedbackBtn">💬</button>
+            <button id="ctaFeedbackBtn"></button>
 
-<!-- Feedback Form Modal -->
-<div id="feedbackModal" class="modal" style="display: none;">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Send Us Your Feedback</h2>
-        <form id="feedbackForm" action="https://formspree.io/f/manqvwve" method="POST">
-            <label>
-                Your Name:
-                <input type="text" name="name" id="userName" placeholder="Your Name" required>
-            </label>
-            <label>
-                Your Email:
-                <input type="email" name="email" id="userEmail" placeholder="Email" required>
-            </label>
-            <label>
-                Your Message:
-                <textarea name="message" id="userMessage" placeholder="Please type your feedback"></textarea>
-            </label>
-            <button type="submit" id="sendBtn">Send</button>
-        </form>
+        <!-- Feedback Form Modal -->
+        <div id="feedbackModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Send Us Your Feedback</h2>
+                <form id="feedbackForm" action="https://formspree.io/f/manqvwve" method="POST">
+                    <label>
+                        Your Name:
+                        <input type="text" name="name" id="userName" placeholder="Your Name" required>
+                    </label>
+                    <label>
+                        Your Email:
+                        <input type="email" name="email" id="userEmail" placeholder="Email" required>
+                    </label>
+                    <label>
+                        Your Message:
+                        <textarea name="message" id="userMessage" placeholder="Please type your feedback"></textarea>
+                    </label>
+                    <button type="submit" id="sendBtn">Send</button>
+                </form>
 
-        <div id="loadingMessage" style="display: none; text-align: center;">
-            <p>⏳ Please wait...</p>
-            <div class="spinner"></div>
+                <div id="loadingMessage" style="display: none; text-align: center;">
+                    <p>⏳ Please wait...</p>
+                    <div class="spinner"></div>
+                </div>
+                
+                <p id="confirmationMessage" style="display: none; color: green; text-align: center;"></p>
+            </div> 
         </div>
-        
-        <p id="confirmationMessage" style="display: none; color: green; text-align: center;">✅Your question has been submitted!</p>
-    </div>
-    
-</div>
-
-
-
-
                     
             <div class="footer-bottom">
                 <p>© 2025 Ass-haabul-Qura'n. All rights reserved.</p>

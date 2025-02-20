@@ -135,7 +135,7 @@ body {
 /* Hero Section */
 .hero {
     background: url('images/bg.png') center/cover no-repeat;
-    height: 80vh;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -786,7 +786,7 @@ html, body {
 }
 
 
-/* Floating Button */
+/* Floating Button *
 #feedbackBtn {
     position: fixed;
     bottom: 60px;
@@ -805,7 +805,7 @@ html, body {
 #feedbackBtn:hover {
     background-color: #1da851;
 }
-
+*/
 /* Modal Styling */
 .modal {
     display: none;
@@ -832,10 +832,12 @@ html, body {
 }
 
 .close {
+    background: #c9302c;
     float: right;
     font-size: 24px;
     cursor: pointer;
 }
+
 
 /* Form Styling */
 #feedbackForm input, #feedbackForm textarea {
