@@ -178,10 +178,7 @@ document.getElementById("scholarForm").addEventListener("submit", async function
     try {
         const response = await fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "" // Replace with your OpenAI API key
-            },
+          
             body: JSON.stringify({
                 model: "gpt-4",
                 messages: [{ role: "user", content: question }]
