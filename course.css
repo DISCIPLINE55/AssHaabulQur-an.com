@@ -10,7 +10,7 @@ body {
 
 /* Header Styling */
 header {
-    background-color: #0275d8;
+    background-color: #008080;
     color: white;
     padding: 2px 0;
     font-size: 16px;
@@ -99,7 +99,7 @@ header {
     display: inline-block;
     margin-top: 2px;
     padding: 5px 10px;
-    background-color: #0275d8;
+    background-color: #008080;
     color: white;
     font-weight: bold;
     text-decoration: none;
@@ -111,3 +111,4 @@ header {
     background-color: #025aa5;
     transform: scale(1.05);
 }
+

@@ -38,20 +38,20 @@
 
     <header>
         <nav class="navbar">
-            <div class="logo"><img src="images/logo2.png" alt="ASS-HAABUL-QURA’N"></div>
+            <div class="logo"><img src="images/logo2.png" alt="ASS-HAABUL-QURA’N" loading="lazy"></div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#surahList">Surahs</a></li>
                 <li><a href="#duaSection">Dua</a></li>
                 <li><a href="/hadith.html">Hadith</a></li>
-                <li><a href="#live-studies">Live Classes</a></li>
+                <li><a href="#live-studie">Live Classes</a></li>
                 <li><a href="#islamicBlog">Islamic Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">Contact</a></li>
                 <li><button onclick="logout()" class="logout-btn">Logout</button></li>
                 <li class="search-container"><input type="text" id="searchInput" placeholder="Search Surahs..." onkeyup="searchSurahs()"></li>
             </ul>
             <div >
-                
+                <button id="toggleTheme">🌙</button>
             </div>
             
             <div class="menu-toggle" onclick="toggleMenu()"> ☰ </div>
@@ -89,21 +89,21 @@
         <h2>Our Featured Quran Courses</h2>
         <div class="courses-container">
             <div class="course" id="tajweed">
-                <img src="images/good.png" alt="Tajweed Course">
+                <img src="images/good.png" alt="Tajweed Course" loading="lazy">
                 <h3>Tajweed Mastery</h3>
                 <p>Learn the rules of proper Quranic recitation with Tajweed.</p>
                 <button class="enroll-btn" onclick="enrollCourse('tajweed')">Enroll Now</button>
             </div>
 
             <div class="course" id="memorization">
-                <img src="images/img1.png" alt="Memorization Course">
+                <img src="images/img1.png" alt="Memorization Course" loading="lazy">
                 <h3>Quran Memorization</h3>
                 <p>Step-by-step guidance to help you memorize the Quran easily.</p>
                 <button class="enroll-btn" onclick="enrollCourse('memorization')">Enroll Now</button>
             </div>
 
             <div class="course" id="tafseer">
-                <img src="images/allah.png" alt="Tafseer Course">
+                <img src="images/allah.png" alt="Tafseer Course" loading="lazy">
                 <h3>Tafseer Quran</h3>
                 <p>Deepen your understanding of the Quran with Tafseer lessons.</p>
                 <button class="enroll-btn" onclick="enrollCourse('tafseer')">Enroll Now</button>
@@ -131,7 +131,7 @@
 
     <div id="duaSection">
         <h2> <em>Daily Duas & Supplications</em>🤲</h2>
-        <div class="banner"><img src="images/duaP.png" alt="duaP" width="100px" height="100px"></div>
+        <div class="banner"><img src="images/duaP.png" alt="duaP" width="100px" height="100px" loading="lazy"></div>
         <div class="dua">
             <h3>Dua Before Sleeping</h3>
             <p class="arabic">اللَّهُمَّ بِاسْمِكَ أَمُوتُ وَأَحْيَا</p>
@@ -163,9 +163,9 @@
 
         <div id="askScholar">
             <h2>📩 Ask a Scholar</h2>
-            <p>Have any Islamic questions? Submit your question, and a scholar will respond.</p>
+            <p>Have any Islamic questions? Submit your question, and get an AI response immediately.</p>
         
-            <form id="scholarForm" action="https://formspree.io/f/manqvwve" method="POST">
+            <form id="scholarForm">
                 <label for="name">Your Name:</label>
                 <input type="text" id="name" placeholder="Enter your name" required>
         
@@ -175,11 +175,21 @@
                 <label for="question">Your Question:</label>
                 <textarea id="question" placeholder="Type your question here..." required></textarea>
         
-                <button type="submit">Submit</button>
+                <button type="submit">Ask AI</button>
             </form>
-            
-            <p id="confirmationMessage" style="display: none; color: green; text-align: center;">✅Your question has been submitted!</p>
+        
+            <div id="aiResponse" style="display: none;">
+                <h3>🤖 AI Scholar's Response</h3>
+                <p id="responseText"></p>
+                <button id="whatsappBtn">Ask a Real Scholar</button>
+                <button id="submitToScholars">Submit for Scholar Review</button>
+            </div>
+        
+            <p id="confirmationMessage" style="display: none; color: green; text-align: center;">
+                ✅ Your question has been submitted!
+            </p>
         </div>
+        
         
     </section>
 
@@ -215,61 +225,61 @@
             <h2>🗣️ What Our Students Say</h2>
         
             <div class="testimonial">
-                <img src="images/sheikh hani.png" alt="Student 1">
+                <img src="images/sheikh hani.png" alt="Student 1" loading="lazy">
                 <p>“This platform has helped me memorize more surahs with ease! Alhamdulillah!”</p>
                 <h4>- Aisha Mohammed</h4>
             </div>
         
             <div class="testimonial">
-                <img src="images/sheikh hani.png" alt="Student 1">
+                <img src="images/sheikh hani.png" alt="Student 1" loading="lazy">
                 <p>“The lessons are well-structured and easy to follow. May Allah bless this initiative.”</p>
                 <h4>- Yusuf Ibrahim</h4>
             </div>
         
             <div class="testimonial">
-                <img src="images/sheikh hani.png" alt="Student 1">
+                <img src="images/sheikh hani.png" alt="Student 1" loading="lazy">
                 <p>“I love how interactive the platform is. It feels like a real classroom experience.”</p>
                 <h4>- Fatima Ali</h4>
             </div>
 
             <div class="testimonial">
-                <img src="images/sheikh hani.png" alt="Student 1">
+                <img src="images/sheikh hani.png" alt="Student 1" loading="lazy">
                 <p>"This platform has truly helped me improve my Quran recitation. Highly recommended!"</p>
                 <h4>— Ahmed Al-Hassan</h4>
             </div>
         
             <div class="testimonial">
-                <img src="images/sheikh hani.png" alt="Student 1">
+                <img src="images/sheikh hani.png" alt="Student 1" loading="lazy">
                 <p>"The Tajweed lessons are so easy to follow. I love the interactive learning!"</p>
                 <h4>— Fatima Mohammed</h4>
             </div>
         
             <div class="testimonial">
-                <img src="images/sheikh hani.png" alt="Student 1">
+                <img src="images/sheikh hani.png" alt="Student 1" loading="lazy">
                 <p>"A wonderful platform for beginners and advanced learners alike!"</p>
                 <h4>— Yusuf Rahman</h4>
             </div>
 
             <div class="testimonial">
-                <img src="images/sheikh hani.png" alt="Student 1">
+                <img src="images/sheikh hani.png" alt="Student 1" loading="lazy">
                 <p>“This platform has helped me improve my Quranic recitation. The lessons are well-structured and easy to follow.”</p>
                 <h4>- Amina Abdulrahman</h4>
             </div>
         
             <div class="testimonial">
-                <img src="images/sheikh hani.png" alt="Student 1">
+                <img src="images/sheikh hani.png" alt="Student 1" loading="lazy">
                 <p>“Learning with As-haabul-qura’n has been an amazing journey. The tutors are very knowledgeable.”</p>
                 <h4>- Bilal Mohammed</h4>
             </div>
         
             <div class="testimonial">
-                <img src="images/sheikh hani.png" alt="Student 1">
+                <img src="images/sheikh hani.png" alt="Student 1 loading="lazy">
                 <p>“I love how I can study at my own pace. The quizzes and exercises help reinforce what I learn.”</p>
                 <h4>- Fatimah Yusuf</h4>
             </div>
 
             <div class="testimonial">
-                <img src="images/sheikh hani.png" alt="Student 1">
+                <img src="images/sheikh hani.png" alt="Student 1" loading="lazy">
                 <p>“I love the flexibility of the courses. I can study at my own pace and still get guidance when needed.”</p>
                 <h4>- Omar Farouk</h4>
             </div>
@@ -317,41 +327,13 @@
             </div>
         </div> 
     </section>
+    
 
-    <section class="contact" id="contact">
-        <div id="contact">
-            <h2>📩 Contact Us</h2>
-        
-            <p>If you have any questions, feel free to reach out to us.</p>
-        
-            <form id="contact-form" action="https://formspree.io/f/manqvwve" method="POST">
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" name="name" required>
-        
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" required>
-        
-                <label for="message">Your Message:</label>
-                <textarea id="message" name="message" required></textarea>
-        
-                <button type="submit">Send Message</button>
-            </form>
-            <p id="confirmationMessage" style="display: none; color: green; text-align: center;"></p>
-        
-            <div class="contact-info">
-                <p>📍 Location: Gomoa Gyaman, Ghana</p>
-                <p>📞 Phone: +233 55 885 2609</p>
-                <p>📞 Phone: +233 54 772 4646</p>
-                <p>📧 Email: info@ashaabulquran.com</p>
-            </div>
-        </div>
-    </section>
-
-        <footer>
+        <footer id="about">
             
             <div class="footer-container">
                 <div class="footer-about">
-                    <img src="images/logo2.png" alt="As-haabul-Qura'n">
+                    <img src="images/logo2.png" alt="As-haabul-Qura'n" loading="lazy">
                     <h3>About As-haabul-Qura'n</h3>
                     <p>Providing easy access to Quranic studies for everyone. Join us in learning and growing together.</p>
                 </div>

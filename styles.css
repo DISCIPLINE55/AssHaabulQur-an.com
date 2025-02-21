@@ -5,10 +5,20 @@
     font-family: Arial, sans-serif;
 }
 
+/* Default light mode styles */
 body {
+    background-color: white;
+    color: black;
+    max-width: 2000px;
     width: 100%;
-    background: #e2eaf4;
-    max-width: 5000px;
+    /* Other styles */
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: black;
+    color: white;
+    /* Other styles */
 }
 
 /* Navbar */

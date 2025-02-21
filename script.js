@@ -161,19 +161,88 @@ document.addEventListener("DOMContentLoaded", displayBookmarks);
 
 
 
+document.getElementById("scholarForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
 
+    const question = document.getElementById("question").value;
+    const responseText = document.getElementById("responseText");
+    const aiResponse = document.getElementById("aiResponse");
+    const scholarForm = document.getElementById("scholarForm");
+    const confirmationMessage = document.getElementById("confirmationMessage");
+    const scholarDropdown = document.getElementById("scholarDropdown"); // Assuming there's a dropdown
 
-document.getElementById("scholarForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+    // Show AI thinking message
+    responseText.innerText = "🔄 Thinking...";
+    aiResponse.style.display = "block";
 
-    // Get form values
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let question = document.getElementById("question").value;
+    try {
+        const response = await fetch("https://api.openai.com/v1/chat/completions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "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"
+            },
+            body: JSON.stringify({
+                model: "gpt-4",
+                messages: [{ role: "user", content: question }]
+            })
+        });
 
-    if (name && email && question) {
-        document.getElementById("confirmationMessage").style.display = "block";
-        document.getElementById("scholarForm").reset();
+        const data = await response.json();
+        responseText.innerText = data.choices[0].message.content;
+
+    } catch (error) {
+        responseText.innerText = "❌ AI is unavailable. Please try again.";
+    }
+});
+
+// WhatsApp button redirection
+document.getElementById("whatsappBtn").addEventListener("click", function () {
+    window.location.href = "https://chat.whatsapp.com/Drx3c72aeCIDWM73PpcGvw";
+});
+
+// Submit to scholars button
+document.getElementById("submitToScholars").addEventListener("click", async function () {
+    const scholarForm = document.getElementById("scholarForm");
+    const confirmationMessage = document.getElementById("confirmationMessage");
+    const scholarDropdown = document.getElementById("scholarDropdown"); // Assuming there's a dropdown
+
+    // Collect form values
+    const formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        question: document.getElementById("question").value
+    };
+
+    try {
+        const response = await fetch("https://formspree.io/f/manqvwve", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(formData) // Convert data to JSON format
+        });
+
+        if (response.ok) {
+            confirmationMessage.innerText = "✅ Your question has been submitted!";
+            confirmationMessage.style.display = "block";
+            
+            // Reset form and hide elements
+            scholarForm.reset();
+            document.getElementById("aiResponse").style.display = "none"; 
+            
+            // Close dropdown if it exists
+            if (scholarDropdown) {
+                scholarDropdown.style.display = "none"; // Assuming this closes it
+            }
+        } else {
+            confirmationMessage.innerText = "❌ Failed to submit. Try again.";
+            confirmationMessage.style.display = "block";
+        }
+    } catch (error) {
+        confirmationMessage.innerText = "❌ Error submitting form.";
+        confirmationMessage.style.display = "block";
     }
 });
 
@@ -239,4 +308,19 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+const toggleThemeBtn = document.getElementById('toggleTheme');
+const currentTheme = localStorage.getItem('theme');
 
+// Apply the saved theme on page load
+if (currentTheme) {
+    document.body.classList.add(currentTheme);
+    toggleThemeBtn.textContent = currentTheme === 'dark-mode' ? '☀' : '🌙';
+}
+
+// Toggle theme on button click
+toggleThemeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const theme = document.body.classList.contains('dark-mode') ? 'dark-mode' : '';
+    localStorage.setItem('theme', theme);
+    toggleThemeBtn.textContent = theme === 'dark-mode' ? '☀' : '🌙';
+});

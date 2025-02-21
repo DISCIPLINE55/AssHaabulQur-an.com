@@ -91,9 +91,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const otherCourses = {
             tafseer: {
                 title: "Tafseer Quran",
-                content: `<p>Deepen your understanding of the Quran with Tafseer lessons.</p>
-                          <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/v0r76TgXL4E?si=Y4Nak2gxdT8w-pgQ&amp;start=285" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                          <p><a href="pdfs/tafseer.pdf" download>📄 Download Course Notes</a></p>`
+                content: `
+                          <div class="tajweed-course">
+                    <p>Deepen your understanding of the Quran with Tafseer lessons.</p>
+                    <div class="tajweed-video-container">
+                       <iframe width="250" height="250" src="https://www.youtube-nocookie.com/embed/v0r76TgXL4E?si=Y4Nak2gxdT8w-pgQ&amp;start=285" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <p><a href="pdfs/tafseer.pdf" download>📄 Download Course Notes</a></p>
+                </div>`
             }
         };
 
