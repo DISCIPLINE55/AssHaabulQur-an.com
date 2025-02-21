@@ -180,7 +180,7 @@ document.getElementById("scholarForm").addEventListener("submit", async function
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "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"
+                "Authorization": "Bearer OPENAI_API_KEY"
             },
             body: JSON.stringify({
                 model: "gpt-4",
