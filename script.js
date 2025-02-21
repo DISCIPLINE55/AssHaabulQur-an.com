@@ -180,7 +180,7 @@ document.getElementById("scholarForm").addEventListener("submit", async function
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer OPENAI_API_KEY"
+                "Authorization": "" // Replace with your OpenAI API key
             },
             body: JSON.stringify({
                 model: "gpt-4",
