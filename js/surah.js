@@ -15,6 +15,16 @@ async function getMicrophoneAccess() {
     };
 };
 
+ /*** Navbar Toggle ***/
+ document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+    });
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     const audioPlayer = document.getElementById("audioPlayer");
     const surahDropdown = document.getElementById("surahDropdown");

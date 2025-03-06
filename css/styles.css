@@ -24,23 +24,10 @@
 body {
     background-color: white;
     color: black;
-    opacity: 0;
-    animation: fadeIn 1s ease-in-out forwards;
-    overflow-x: hidden;
     width: 100%;
     /* Other styles */
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 /* Dark Mode Styles */
 body.dark-mode {
@@ -52,17 +39,6 @@ body.dark-mode {
     color: #FFD700;
 }
 
-/* Smooth Section Appearance */
-section, div {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-section.visible, div.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
 /* Navbar */
 .navbar {
     width: 100%;
@@ -240,7 +216,7 @@ section.visible, div.visible {
     text-align: center;
     color: white;
     padding: 2rem;
-    margin-bottom: 10rem;
+    margin-bottom: 5rem;
 }
 
 .hero-content {
@@ -872,6 +848,12 @@ h1{
     transition: color 0.3s ease-in-out;
 }
 
+.footer-social i {
+    color: #ff9800;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
 .footer-links a:hover, 
 .footer-social a:hover {
     color: #ff9800;
@@ -888,6 +870,7 @@ h1{
     color: white;
     gap: 10px;
 }
+
 .footer-contact i {
     color: #ff9800;
     text-decoration: none;
@@ -914,13 +897,14 @@ h1{
 #backToTop {
     position: fixed;
     bottom: 20px;
-    right: 15px;
+    right: 20px;
     background: var(--accent);
     color: var(--primary);
     border: none;
     padding: 8px 12px;
     border-radius: var(--border-radius);
     font-size: 12px;
+    border-radius: 50px;
     cursor: pointer;
     transition: var(--transition);
     z-index: 1000;
@@ -1082,6 +1066,18 @@ button {
 
 
 /* Form Styling */
+#feedbackModal {
+    background: linear-gradient(to bottom, #eef7f8, #d4efdf);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 1000;
+
+}
+
 #feedbackForm input, #feedbackForm textarea {
     width: 100%;
     padding: 10px;
@@ -1091,7 +1087,7 @@ button {
 }
 
 #feedbackForm button {
-    background-color: #f7b721;
+    background-color: #ff9800;
     color: white;
     border: none;
     padding: 10px 15px;
