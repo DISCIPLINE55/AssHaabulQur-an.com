@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Fetch Duas from Local JSON File
     async function fetchDuas() {
         try {
-            let response = await fetch("duas.json");
+            let response = await fetch("/json/duas.json");
 
             if (!response.ok) {
                 throw new Error(`HTTP Error! Status: ${response.status}`);

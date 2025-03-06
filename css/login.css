@@ -1,0 +1,299 @@
+/* ========== Global Styles ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Body */
+body {
+    background: linear-gradient(#F8F8F8, #f8e8e8);
+    color: #1C6758;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: 80px; /* Prevent content from hiding under fixed navbar */
+}
+
+/* ========== Navbar ========== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #1C6758;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Logo */
+.navbar .logo img {
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #ff9800;
+    transition: 0.3s;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #F8F8F8;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff9800;
+}
+
+/* Mobile Menu */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    color:#F8F8F8;
+    cursor: pointer;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #1C6758;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        gap: 10px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+/* ========== Typing Effect (Responsive) ========== */
+.nav-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #F8F8F8;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #ff9800;
+    text-align: center;
+    width: 0;
+    animation: typing 3s steps(30, end) forwards, blink 0.7s infinite;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Typing Effect Animation */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 54%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .nav-title {
+        font-size: 16px;
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-title {
+        font-size: 14px;
+        width: 90%;
+        border-right: 2px solid #FFD700;
+    }
+}
+
+/* ========== Authentication Form ========== */
+.login-container, .dashboard-container {
+    background: #ff9800;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    backdrop-filter: blur(50px);
+    margin-top: 14px;
+}
+
+/* Responsive Forms */
+@media (max-width: 480px) {
+    .login-container, .dashboard-container {
+        padding: 20px;
+        max-width: 350px;
+    }
+}
+
+/* ========== Input Fields ========== */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: none;
+    font-size: 16px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2);
+    color: #1C6758;
+    outline: none;
+    transition: 0.3s;
+}
+
+input::placeholder {
+    color: rgba(28, 103, 88, 0.6);
+}
+
+input:focus {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* ========== Buttons ========== */
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #1C6758;
+    color: #F8F8F8;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Buttons */
+@media (max-width: 480px) {
+    button {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+/* ========== Footer ========== */
+.footer-container {
+    background: #1C6758;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1.5rem;
+    border-radius: 10px;
+    line-height: 25px;
+}
+
+.footer-about, .footer-links, .footer-contact, .footer-social {
+    align-self: start;
+    margin: 10px;
+    color: #F8F8F8;
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-about h3, .footer-links h3, .footer-contact h3, .footer-social h3 {
+    text-decoration: underline;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ff9800;
+}
+
+.footer-links a, .footer-social a {
+    text-decoration: none;
+    color: #F8F8F8;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover, .footer-social a:hover {
+    color: #ff9800;
+}
+
+.footer-about img {
+    max-width: 80px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 2px solid #ff9800;
+    border-radius: 25%;
+    transition: 0.3s;
+}
+
+.footer-about img:hover {
+    transform: scale(1.05);
+}
+
+.footer-contact i {
+    color: #ff9800;
+}
+
+/* Responsive Footer */
+@media (max-width: 480px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ========== Scrollbar Customization ========== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #ff9800;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1C6758;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff9800;
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #ff9800 #1C6758;
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - ASS-HAABUL-QURAN</title>
+    <title>Dashboard - ASS-HAABUL-QURAN</title>
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -21,19 +21,30 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="courses.html">Courses</a></li>
             <li><a href="aboutUs.html">About</a></li>
+            <li><a href="login.html" class="logout-btn">Logout</a></li>
         </ul>
         <div class="menu-toggle" id="menuToggle">☰</div>
     </nav>
 
-    <!-- Login Container -->
-    <div class="login-container">
-        <h2>Login to Your Account</h2>
-        <form id="login-form">
-            <input type="email" id="login-email" placeholder="Enter your email" required>
-            <input type="password" id="login-password" placeholder="Enter your password" required>
-            <button type="submit">Login</button>
-        </form>
-        <p>Don't have an account? <a href="register.html">Register here</a></p>
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <h2>Welcome, <span id="username">User</span>!</h2>
+        <p>Manage your profile and courses.</p>
+
+        <div class="profile-section">
+            <h3>Profile Information</h3>
+            <input type="text" id="edit-name" value="John Doe">
+            <input type="email" id="edit-email" value="johndoe@example.com">
+            <button>Update Profile</button>
+        </div>
+
+        <div class="courses-section">
+            <h3>Your Enrolled Courses</h3>
+            <ul id="course-list">
+                <li>Tajweed Level 1</li>
+                <li>Memorization Course</li>
+            </ul>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -75,6 +86,5 @@
         </div>        
     </footer> 
     <script src="/js/login.js"></script>
-
 </body>
 </html>

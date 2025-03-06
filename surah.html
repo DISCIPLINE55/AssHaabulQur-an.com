@@ -1,54 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Surah Details</title>
-        <link rel="stylesheet" href="surah.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surah Details</title>
+    <link rel="stylesheet" href="/css/surah.css">
+        <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
 <body>
- 
+    <header>
+        <nav class="navbar" id="navLinks">
+            <div class="logo">
+                <img src="images/logo2.png" alt="ASS-HAABUL-QURA’N" loading="lazy">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/dua.html">Dua</a></li>
+                <li><a href="/hadith.html">Hadith</a></li>
+                <li>
+                    <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchAll()">
+                </li>
+            </ul>
+            <button id="toggleTheme">🌙</button>
+            <div class="menu-toggle" id="menuToggle">☰</div>
+        </nav>
+        <p id="noResults" style="display:none; text-align:center; color:red;">No results found.</p>
+    </header>
+
     <div id="mainContainer">
-
-        <!-- Full Surah Section -->
-        <div id="fullSurahSection">
-            <h1>📖 Quran Explorer</h1>
+        <section class="audio-player-container">
+            <h1 class="surah-title">Quran Audio Player</h1>
         
-            <!-- Navigation Buttons in a Single Container -->
-            <div class="nav-buttons">
-                <a href="/index.html"><button id="goHomeButton">🏠 Home</button></a>
-                <a href="#verseContainer"><button id="goSurahButton">📜 Surah</button></a>
-                <label for="themeToggle">Dark Mode:</label>
-                <input type="checkbox" id="themeToggle">
-            </div>
+            <label for="surahDropdown">Choose Surah:</label>
+            <select id="surahDropdown">
+                <option value="">Loading Surahs...</option>
+            </select>
         
-            <h3>Full Surah Recitation</h3>
+            <label for="reciterDropdown">Choose Reciter:</label>
+            <select id="reciterDropdown">
+                <option value="mishari_al_afasy">Mishari Al Afasy</option>
+                <option value="abdul_baset/murattal">Abdul Baset Murattal</option>
+                <option value="shuraim">Shuraim</option>
+                <option value="offline">Offline Audio</option>
+            </select>
         
-            <!-- Surah Search Bar -->
-            <input type="text" id="surahSearch" placeholder="🔍 Search Surah..." onkeyup="filterSurah()">
-            <ul id="surahResults"></ul>
+            <div class="audio-player">
+                <!-- Dynamic Reciter Image -->
+                <img id="playerImage" src="/images/logo2.png" alt="Reciter Image" class="album-art">
         
-            <audio id="fullSurahAudio" controls></audio>
+                <h2 id="nowPlaying">Now Playing: --</h2>
         
-            <!-- Buttons for Play/Pause/Stop in a Single Container -->
-            <div class="smallButtons">
-                <button id="playFullSurah">▶️ Play</button>
-                <button id="pauseFullSurah">⏸ Pause</button>
-                <button id="stopFullSurah">⏹ Stop</button>
-            </div>
+                <!-- Equalizer Visualizer -->
+                <canvas id="equalizer" width="400" height="80"></canvas> 
         
-            <label>
-                <input type="checkbox" id="backgroundAudioToggle"> Enable Background Audio
-            </label>
-        </div>
+                <audio id="audioPlayer"></audio>
         
+                <div class="progress-container">
+                    <span id="currentTime">0:00</span>
+                    <input type="range" id="progressBar" value="0" title="Seek Audio">
+                    <span id="duration">0:00</span>
+                </div>
+        
+                <div class="controls">
+                    <div class="control-btn" id="prevTrack"><i class="fa fa-step-backward"></i></div>
+                    <div class="control-btn play-btn" id="playPauseBtn"><i class="fa fa-play"></i></div>
+                    <div class="control-btn" id="nextTrack"><i class="fa fa-step-forward"></i></div>
+                </div>
                 
-
+        
+                <div class="bottom-controls">
+                    <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="1" title="Volume">
+                    
+                    <select id="speedControl" title="Playback Speed">
+                        <option value="1">1x</option>
+                        <option value="1.25">1.25x</option>
+                        <option value="1.5">1.5x</option>
+                        <option value="2">2x</option>
+                    </select>
+        
+                    <div class="bottom-controls">
+                        <button id="loopBtn" class="icon-btn" title="Toggle Loop">
+                            <i class="fas fa-repeat"></i> <!-- Font Awesome Loop Icon -->
+                        </button>
+                        <button id="downloadBtn" class="icon-btn" title="Download Audio">
+                            <i class="fas fa-download"></i> <!-- Font Awesome Download Icon -->
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
         <!-- Verses List -->
         <div id="verseContainer">
-            <h2>📜 Verses</h2>
+            <h1>📜 Verses</h1>
                 <!-- Surah Details -->
-                <h1 id="surahTitle">Surah Details</h1>
+                <h2 id="surahTitle">Surah Details</h2>
                 <h3 id="surahTranslation"></h3>
                 <p id="revelationType"></p>
                 <p id="surahDescription"></p>
@@ -58,24 +105,68 @@
         <!-- Audio Player for Verses -->
         <audio id="verseAudioPlayer"></audio>
 
-        <!-- Tafsir Section -->
+            <!-- Tafsir Section -->
         <div id="tafsirSection">
             <h2>📖 Tafsir (Exegesis)</h2>
+            <label for="tafsirSelect">Select Tafsir Source:</label>
             <select id="tafsirSelect">
-                <option value="tafsir-fatiha">Tafsir Al-Fatiha</option>
-                <option value="tafsir-baqarah">Tafsir Al-Baqarah (Verse 1-5)</option>
-                <option value="tafsir-imran">Tafsir Aal-e-Imran (Verse 1-5)</option>
+                <option value="">Loading Tafsir sources...</option>
             </select>
             <div id="tafsirContent">
                 <p>Select a Surah to read its Tafsir.</p>
             </div>
         </div>
-        
 
-        <script src="surah.js"></script>
-        <script src="player.js"></script>
-        <button id="backToTop">↑TOP</button>
     </div>
-    
+
+    <footer id="about">
+        <div class="footer-container">
+            <div class="footer-about">
+                <img src="images/logo2.png" alt="As-haabul-Qura'n" loading="lazy">
+                <h3>About As-haabul-Qura'n</h3>
+                <p>Providing easy access to Quranic studies for everyone. Join us in learning and growing together.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p><i class="fa-solid fa-phone"></i> +233 53 777 0000</p>
+                <p><i class="fa-solid fa-phone"></i> +33 4 772 2246</p>
+                <p><i class="fa-solid fa-envelope"></i> info@ashaabulquran.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> Mankessim, Central Ghana</p>
+            </div>
+            <div class="footer-social">
+                <h3>Connect with us</h3>
+                <ul>
+                    <li><a href="https://facebook.com/ashaabulquran" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/ashaabulquran" target="_blank">Twitter</a></li>
+                    <li><a href="https://instagram.com/ashaabulquran" target="_blank">Instagram</a></li>
+                    <li><a href="https://youtube.com/ashaabulquran" target="_blank">YouTube</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Ass-haabul-Qura'n. All rights reserved.</p>
+            </div>
+        </div>        
+    </footer> 
+    <script>
+        fetch("showmodal.html")
+            .then(response => response.text())
+            .then(html => {
+            document.getElementById("custom-modal").innerHTML = html;
+        });
+    </script>        
+        <!-- JavaScript Files -->
+        <script src="/js/script.js"></script>
+        <script src="/js/surah.js"></script>
+
+        <button id="backToTop">↑TOP</button>
 </body>
 </html>

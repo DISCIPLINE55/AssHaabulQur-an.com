@@ -36,4 +36,3 @@ function isUserEnrolled(courseName) {
     let enrolledCourses = JSON.parse(localStorage.getItem("enrolledCourses")) || [];
     return enrolledCourses.includes(courseName);
 }
-

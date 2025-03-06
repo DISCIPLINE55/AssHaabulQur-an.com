@@ -1,0 +1,506 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F8F8F8;
+    color: #1C6758;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1C6758;
+    padding: 15px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo img {
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+.nav-links a:hover {
+    color: #1C6758;
+    background: #FFD700;
+}
+/* Dark Mode */
+.dark-mode {
+    background-color: #121212;
+    color: #EAEAEA;
+}
+
+.dark-mode .navbar,
+.dark-mode .footer-container {
+    background-color: #1E1E1E;
+}
+
+.dark-mode .nav-links a,
+.dark-mode .footer-links a {
+    color: #EAEAEA;
+}
+
+.dark-mode .value,
+.dark-mode .feature,
+.dark-mode .faq-item {
+    background-color: #222;
+    color: #EAEAEA;
+}
+
+.dark-mode #toggleTheme {
+    color: #FFD700;
+}
+
+#dark-mode-toggle {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    z-index: 1000;
+}
+
+
+/* Active Navbar Link */
+.nav-links a.active {
+    background: #FFD700;
+    color: #1C6758;
+    border-radius: 5px;
+}
+
+/* Scroll Animations */
+.section-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show menu button */
+        margin-right: 30px;
+    }
+
+    .nav-links {
+        display: none; /* Hide menu */
+        flex-direction: column;
+        background: #1C6758;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show menu when active */
+    }
+}
+
+
+/* Header */
+header {
+    background: url("/images/background-home-desktop.jpg") no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+header p {
+    font-size: 1.2rem;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Sections */
+section {
+    padding: 60px 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-in-out;
+}
+
+.section-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Mission Section */
+.mission {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Core Values */
+.values {
+    background: #FFF;
+    padding: 50px 20px;
+}
+
+.value-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.value {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.value:hover {
+    transform: scale(1.05);
+}
+
+/* Features */
+.features {
+    background: #1C6758;
+    color: white;
+    padding: 50px 20px;
+}
+
+.feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.feature {
+    background: #145A32;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 300px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.feature:hover {
+    transform: scale(1.05);
+}
+
+/* FAQ Section */
+.faq-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px auto;
+    max-width: 600px;
+    transition: all 0.4s ease-in-out;
+}
+
+.faq-item h3 {
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.faq-item h3:hover {
+    color: #FFD700;
+}
+
+/* FAQ Toggle Animation */
+.faq-item p {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.faq-item.open p {
+    max-height: 200px;
+}
+
+/* Contact Section */
+.contact {
+    background: #F8F8F8;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: 50px auto;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.contact h2 {
+    font-size: 2rem;
+    color: #1C6758;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.contact p {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+/* Form Styling */
+.contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact input, 
+.contact textarea {
+    width: 90%;
+    max-width: 500px;
+    padding: 12px;
+    border: 2px solid #1C6758;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+    background: white;
+}
+
+.contact textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.contact input:focus, 
+.contact textarea:focus {
+    border-color: #FFD700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    transform: scale(1.02);
+}
+
+/* Submit Button */
+.contact button {
+    background: #1C6758;
+    color: white;
+    font-size: 1.1rem;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact button:hover {
+    background: #FFD700;
+    color: #1C6758;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact {
+        padding: 40px 15px;
+    }
+
+    .contact input,
+    .contact textarea {
+        width: 100%;
+    }
+}
+
+
+/* Footer */
+.footer-container {
+    background: #1C6758;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1.5rem;
+    border-radius: 10px;
+    line-height: 20px;
+}
+
+.footer-about, 
+.footer-links, 
+.footer-contact, 
+.footer-social {
+    align-self: start;
+    margin: 10px;
+    color: white;
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-about h3, 
+.footer-links h3, 
+.footer-contact h3, 
+.footer-social h3 {
+    text-decoration: underline;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #f39c12;
+}
+
+/* Footer Links */
+.footer-links ul, 
+.footer-social ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li, 
+.footer-social li {
+    margin-bottom: 8px;
+}
+
+
+.footer-links a, 
+.footer-social a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover, 
+.footer-social a:hover {
+    color: #ff9800;
+}
+
+.footer-about img {
+    max-width: 80px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.footer-contact p {
+    font-weight: 500;
+    color: white;
+}
+.footer-contact i {
+    color: #ff9800;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-contact i:hover {
+    color: white;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer-bottom {
+    margin-top: 10px;
+    font-size: 14px;
+    color: white;
+}
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .value-list, .feature-list {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+
+/* Custom Scrollbar for Modern Browsers */
+::-webkit-scrollbar {
+    width: 8px; /* Scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+    background: #ff9800; /* Light background */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff9800; /* Blue scrollbar */
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff9800; 
+}
+
+/* Firefox Custom Scrollbar */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #ff9800 #0b0000;
+}
+
+/* Ensure smooth scrolling for entire page */
+html, body {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+}
+
+/* Dark Mode Scrollbar */
+.dark-mode ::-webkit-scrollbar-thumb {
+    background: #444; /* Dark mode scrollbar */
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: #222;
+}
+
+.dark-mode html {
+    scrollbar-color: #444 #222;
+}

@@ -3,69 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>As-haabul-Qura'n</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="feedback.css">
-    <script src="script.js" defer></script>
-    <script src="liveclass.js" defer></script>
-    <script src="enrollment.js" defer></script>
-    <script src="courses.js" defer></script>
-    <script src="surahs.js" defer></script>
-    <script src="duas.js" defer></script>
-    <script src="askScholar.js" defer></script>
-    <script src="contact.js" defer></script>   
-    <script src="testimonials.js" defer></script>
-    <script src="faq.js" defer></script>
-    <script src="search.js" defer></script>
-    <script src="dailyAyah.js" defer></script>
-    <script src="islamiB.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Ass-haabul-Qura'n</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/script.js" defer></script>
+    <script src="/js/courses.js" defer></script>
+    <script src="/js/enrollment.js" defer></script>
+    <script src="/js/scriptlogin.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/favicon_io/site.webmanifest">
-    <script>
-        if (!localStorage.getItem("loggedInUser")) { // Change 'user' to 'loggedInUser'
-            window.location.href = "login.html"; // Redirect if not logged in
-        }
-    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   
 </head>
 <body>
-
     <header>
         <nav class="navbar">
-            <div class="logo"><img src="images/logo2.png" alt="ASS-HAABUL-QURA’N" loading="lazy"></div>
+            <div class="logo">
+                <img src="images/logo2.png" alt="ASS-HAABUL-QURA’N" loading="lazy">
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#surahList">Surahs</a></li>
+                <li><a href="/surah.html">Surahs</a></li>
                 <li><a href="#duaSection">Dua</a></li>
                 <li><a href="/hadith.html">Hadith</a></li>
-                <li><a href="#live-studie">Live Classes</a></li>
-                <li><a href="#islamicBlog">Islamic Blog</a></li>
-                <li><a href="#about">Contact</a></li>
-                <li><button onclick="logout()" class="logout-btn">Logout</button></li>
-                <li class="search-container"><input type="text" id="searchInput" placeholder="Search Surahs..." onkeyup="searchSurahs()"></li>
+                <li><a href="#live-studies">LiveClasses</a></li>
+                <li><a href="#islamicBlog">IslamicBlog</a></li>
+                <li><a href="/aboutUs.html">Contact</a></li>
+                <li id="dashboard-link" style="display: none;"><a href="dashboard.html">Dashboard</a></li>
+                <li id="auth-links" style="display: none;">
+                    <a href="login.html">Login</a> | <a href="register.html">Register</a>
+                </li>
+                <li class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchAll()">
+                </li>
             </ul>
-            <div >
-                <button id="toggleTheme">🌙</button>
-            </div>
             
-            <div class="menu-toggle" onclick="toggleMenu()"> ☰ </div>
+            <button id="toggleTheme">🌙</button>
+            <button class="menu-toggle" id="menuToggle">☰</button>
         </nav>
-        
+        <p id="noResults" style="display:none; text-align:center; color:red;">No results found.</p>
     </header>
-
-      <!-- CTA Section -->
-      <div style="text-align: center; margin-top: 5px; background-color: #f1f1f1; padding: 20px;">
+    
+    
+    <section>
+        
+    </section>
+    <!-- CTA Section -->
+    <div style="text-align: center; margin-top: 5px; background-color: #f1f1f1; padding: 20px;">
         <p style="font-size: 20px; font-weight: bold; color: #333;">
             🌟 We value your feedback! Let us know how we can improve your experience with ASS-HAABUL-QURAN. 💬 <br>
             Click the button below to share your thoughts with us!
         </p>
-        <button id="ctaFeedbackBtn" style="background-color: #25D366; color: white; border: none; padding: 10px 15px; border-radius: 5px; font-size: 16px; cursor: pointer;">
+        <button id="ctaFeedbackBtn" style="background-color: #009688; color: white; border: none; padding: 10px 15px; border-radius: 5px; font-size: 16px; cursor: pointer;">
             Share Your Feedback
         </button>
     </div>
@@ -110,24 +103,6 @@
             </div>
         </div>
     </section>
-    
-    
-
-
-    <section>
-        <div class="surah-list">
-            <ul id="surahList">
-                <h1>Click On A Surah To Start Exploring</h1>
-                <!-- More Surahs -->
-            </ul>
-            
-            <audio id="audioPlayer" controls style="display:none;"></audio>
-            
-        </div>
-        
-    </section>
-
-
 
     <div id="duaSection">
         <h2> <em>Daily Duas & Supplications</em>🤲</h2>
@@ -148,12 +123,12 @@
         <h2><a href="/dua.html">Click For More Duas</a></h2>
     </div>
     
-
+    <!--
     <section id="teachers">
         <h2>Meet Our Teachers</h2>
         <p>Experienced Quran instructors to guide your journey.</p>
     </section>
-    
+    -->
     
     <section id="live-studies">
         <h2>Live Studies</h2>
@@ -185,40 +160,36 @@
                 <button id="submitToScholars">Submit for Scholar Review</button>
             </div>
         
-            <p id="confirmationMessage" style="display: none; color: green; text-align: center;">
-                ✅ Your question has been submitted!
+            <p id="confirmationMessage" style="display: none; color: green; text-align: center;"> ✅ Your question has been submitted!
             </p>
-        </div>
-        
-        
+        </div>    
     </section>
 
-
     <section id="islamicBlog">
-    <h2>📝 Islamic Blog</h2>
-    <p>Read insightful articles about Islam, the Quran, and daily life.</p>
-
-    <div class="blog-post">
-        <h3>📖 Importance of the Quran in Our Daily Lives</h3>
-        <p class="summary">The Quran is a guide for mankind, teaching us how to live a righteous life...</p>
-        <p class="full-content">It provides wisdom, laws, and the best way to deal with worldly matters. By reflecting on the Quran and applying its teachings, a person can achieve peace and success in both this life and the hereafter.</p>
-        <a href="#" class="read-more">Read More</a>
-    </div>
-
-    <div class="blog-post">
-        <h3>☪️ 5 Daily Habits of a Practicing Muslim</h3>
-        <p class="summary">Incorporating Islamic teachings into daily routines helps strengthen faith...</p>
-        <p class="full-content">Praying five times a day, reading Quran, making du'a, engaging in charity, and seeking forgiveness are essential habits of a practicing Muslim.</p>
-        <a href="#" class="read-more">Read More</a>
-    </div>
-
-    <div class="blog-post">
-        <h3>🤲 The Power of Du'a (Supplication)</h3>
-        <p class="summary">Making du'a connects us to Allah, seeking His guidance and mercy...</p>
-        <p class="full-content">Through sincere du'a, a Muslim expresses humility, dependence on Allah, and trust in His divine plan. Du'a is a means of drawing closer to Him and strengthening faith.</p>
-        <a href="#" class="read-more">Read More</a>
-    </div>
-</section>
+        <h2>📝 Islamic Blog</h2>
+        <p>Read insightful articles about Islam, the Quran, and daily life.</p>
+    
+        <div class="blog-post">
+            <h3>📖 Importance of the Quran in Our Daily Lives</h3>
+            <p class="summary">The Quran is a guide for mankind, teaching us how to live a righteous life...</p>
+            <p class="full-content" style="display: none;">It provides wisdom, laws, and the best way to deal with worldly matters. By reflecting on the Quran and applying its teachings, a person can achieve peace and success in both this life and the hereafter.</p>
+            <a href="#" class="read-more">Read More</a>
+        </div>
+    
+        <div class="blog-post">
+            <h3>☪️ 5 Daily Habits of a Practicing Muslim</h3>
+            <p class="summary">Incorporating Islamic teachings into daily routines helps strengthen faith...</p>
+            <p class="full-content" style="display: none;">Praying five times a day, reading Quran, making du'a, engaging in charity, and seeking forgiveness are essential habits of a practicing Muslim.</p>
+            <a href="#" class="read-more">Read More</a>
+        </div>
+    
+        <div class="blog-post">
+            <h3>🤲 The Power of Du'a (Supplication)</h3>
+            <p class="summary">Making du'a connects us to Allah, seeking His guidance and mercy...</p>
+            <p class="full-content" style="display: none;">Through sincere du'a, a Muslim expresses humility, dependence on Allah, and trust in His divine plan. Du'a is a means of drawing closer to Him and strengthening faith.</p>
+            <a href="#" class="read-more">Read More</a>
+        </div>
+    </section>
 
     <section class="testimonials">
         <div id="testimonials">
@@ -283,12 +254,8 @@
                 <p>“I love the flexibility of the courses. I can study at my own pace and still get guidance when needed.”</p>
                 <h4>- Omar Farouk</h4>
             </div>
-        </div>
-        
+        </div>  
     </section>
-
-
-
 
     <section>
         <div id="faq">
@@ -328,86 +295,82 @@
         </div> 
     </section>
     
+    <section>
+                <!-- Feedback Button -->
+                <button id="ctaFeedbackBtn"></button>
 
-        <footer id="about">
-            
-            <div class="footer-container">
-                <div class="footer-about">
-                    <img src="images/logo2.png" alt="As-haabul-Qura'n" loading="lazy">
-                    <h3>About As-haabul-Qura'n</h3>
-                    <p>Providing easy access to Quranic studies for everyone. Join us in learning and growing together.</p>
-                </div>
+                <!-- Feedback Form Modal -->
+                <div id="feedbackModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Send Us Your Feedback</h2>
+                        <form id="feedbackForm" action="https://formspree.io/f/manqvwve" method="POST">
+                            <label>
+                                Your Name:
+                                <input type="text" name="name" id="userName" placeholder="Your Name" required>
+                            </label>
+                            <label>
+                                Your Email:
+                                <input type="email" name="email" id="userEmail" placeholder="Email" required>
+                            </label>
+                            <label>
+                                Your Message:
+                                <textarea name="message" id="userMessage" placeholder="Please type your feedback"></textarea>
+                            </label>
+                            <button type="submit" id="sendBtn">Send</button>
+                        </form>
         
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#courses">Courses</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+                        <div id="loadingMessage" style="display: none; text-align: center;">
+                            <p>⏳ Please wait...</p>
+                            <div class="spinner"></div>
+                        </div>
+                        
+                        <p id="confirmationMessage" style="display: none; color: green; text-align: center;"></p>
+                    </div> 
                 </div>
-        
-                <div class="footer-contact">
-                    <h3>Contact</h3>
-                    <p>📞 Phone: +233 53 777 0000</p>
-                    <p>📞 Phone: +33 4 772 2246</p>
-                    <p>📧 info@ashaabulquran.com</p>
-                    <p>📍 Mankessim, Central Ghana</p>
-                </div>
+    </section>
+
+    <footer id="about">
+        <div class="footer-container">
+            <div class="footer-about">
+                <img src="images/logo2.png" alt="As-haabul-Qura'n" loading="lazy">
+                <h3>About As-haabul-Qura'n</h3>
+                <p>Providing easy access to Quranic studies for everyone. Join us in learning and growing together.</p>
             </div>
-
-
-
-            <!-- Feedback Button -->
-            <button id="ctaFeedbackBtn"></button>
-
-        <!-- Feedback Form Modal -->
-        <div id="feedbackModal" class="modal" style="display: none;">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Send Us Your Feedback</h2>
-                <form id="feedbackForm" action="https://formspree.io/f/manqvwve" method="POST">
-                    <label>
-                        Your Name:
-                        <input type="text" name="name" id="userName" placeholder="Your Name" required>
-                    </label>
-                    <label>
-                        Your Email:
-                        <input type="email" name="email" id="userEmail" placeholder="Email" required>
-                    </label>
-                    <label>
-                        Your Message:
-                        <textarea name="message" id="userMessage" placeholder="Please type your feedback"></textarea>
-                    </label>
-                    <button type="submit" id="sendBtn">Send</button>
-                </form>
-
-                <div id="loadingMessage" style="display: none; text-align: center;">
-                    <p>⏳ Please wait...</p>
-                    <div class="spinner"></div>
-                </div>
-                
-                <p id="confirmationMessage" style="display: none; color: green; text-align: center;"></p>
-            </div> 
-        </div>
-                    
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p><i class="fa-solid fa-phone"></i> +233 53 777 0000</p>
+                <p><i class="fa-solid fa-phone"></i> +33 4 772 2246</p>
+                <p><i class="fa-solid fa-envelope"></i> info@ashaabulquran.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> Mankessim, Central Ghana</p>
+            </div>
+            <div class="footer-social">
+                <h3>Connect with us</h3>
+                <ul>
+                    <li><a href="https://facebook.com/ashaabulquran" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/ashaabulquran" target="_blank">Twitter</a></li>
+                    <li><a href="https://instagram.com/ashaabulquran" target="_blank">Instagram</a></li>
+                    <li><a href="https://youtube.com/ashaabulquran" target="_blank">YouTube</a></li>
+                </ul>
+            </div>
             <div class="footer-bottom">
                 <p>© 2025 Ass-haabul-Qura'n. All rights reserved.</p>
             </div>
-        </footer>
-        <button id="backToTop">🔝</button>
+        </div>        
+    </footer> 
+    <button id="backToTop">🔝</button>
+    <div id="modal-container"></div>
+    <script src="/js/feedback.js"></script>
+    <script src="/js/scriptlogin.js"></script>
 
-        <script>
-            function logout() {
-                localStorage.removeItem("loggedInUser"); // Clear user session
-                alert("Logged out successfully!");
-                window.location.href = "login.html"; // Redirect to login page
-            }
-        </script>
-       
-       
-        <script src="feedback.js"></script>
-        
-</body>
+ </body>    
 </html>

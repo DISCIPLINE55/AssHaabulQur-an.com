@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Fetch Hadith data from JSON
     async function fetchHadiths() {
         try {
-            let response = await fetch("40Hadith.json");
+            let response = await fetch("/json/40Hadith.json");
             let hadiths = await response.json();
             displayHadiths(hadiths);
         } catch (error) {

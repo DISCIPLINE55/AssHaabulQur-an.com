@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dua Collection</title>
-    <link rel="stylesheet" href="dua.css">
+    <link rel="stylesheet" href="/css/dua.css">
 </head>
 <body>
     <header>
-        <h1>Dua Collection</h1>
-        <a href="/index.html"><button id="goHomeButton">🏠 Home</button></a>
-        <button id="toggleTheme">🌙</button>
+        <nav class="navbar" id="navLinks">
+            <div class="logo">
+                <img src="images/logo2.png" alt="ASS-HAABUL-QURA’N" loading="lazy">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/hadith.html">Hadith</a></li>
+                <li><a href="#live-studies">LiveClasses</a></li>
+            </ul>
+            <button id="toggleTheme">🌙</button>
+            <div class="menu-toggle" id="menuToggle">☰</div>
+        </nav>
+        <p id="noResults" style="display:none; text-align:center; color:red;">No results found.</p>
     </header>
 
     <div class="search-container">
@@ -20,6 +30,44 @@
 
     <section id="duaList"></section>
 
-    <script src="dua.js"></script>
+    <footer id="about">
+        <div class="footer-container">
+            <div class="footer-about">
+                <img src="images/logo2.png" alt="As-haabul-Qura'n" loading="lazy">
+                <h3>About As-haabul-Qura'n</h3>
+                <p>Providing easy access to Quranic studies for everyone. Join us in learning and growing together.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p><i class="fa-solid fa-phone"></i> +233 53 777 0000</p>
+                <p><i class="fa-solid fa-phone"></i> +33 4 772 2246</p>
+                <p><i class="fa-solid fa-envelope"></i> info@ashaabulquran.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> Mankessim, Central Ghana</p>
+            </div>
+            <div class="footer-social">
+                <h3>Connect with us</h3>
+                <ul>
+                    <li><a href="https://facebook.com/ashaabulquran" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/ashaabulquran" target="_blank">Twitter</a></li>
+                    <li><a href="https://instagram.com/ashaabulquran" target="_blank">Instagram</a></li>
+                    <li><a href="https://youtube.com/ashaabulquran" target="_blank">YouTube</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Ass-haabul-Qura'n. All rights reserved.</p>
+            </div>
+        </div>        
+    </footer> 
+    <button id="backToTop">🔝</button>
+    <script src="/js/dua.js"></script>
 </body>
 </html>

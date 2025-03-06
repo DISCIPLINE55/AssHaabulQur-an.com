@@ -1,0 +1,240 @@
+/* Global Styles */
+:root {
+    --primary: #008080;
+    --accent: #ff9800;
+    --background: #eef7f8;
+    --dark-background: #121212;
+    --dark-text: #EAEAEA;
+    --text-color: #333;
+    --border-radius: 8px;
+    --transition: 0.3s ease-in-out;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    transition: 0.3s;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: #009688;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+}
+
+/* Logo */
+.navbar .logo img {
+    max-height: 50px;
+    width: auto;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+}
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+/* Navbar Links */
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.3s, transform 0.3s;
+}
+.nav-links li {
+    margin-left: 2rem;
+}
+.nav-links a:hover {
+    color: #f39c12;
+    transform: translateY(-3px);
+}
+
+/* Mobile Menu */
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* Responsive Navbar */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #1c1c1c;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        margin: 10px 0;
+    }
+    .menu-toggle {
+        display: block;
+    }
+}
+
+
+button {
+    background: #008080;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+input {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#duaList {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dua-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Footer */
+.footer-container {
+    background: var(--primary);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.footer-about, 
+.footer-links, 
+.footer-contact, 
+.footer-social {
+    align-self: start;
+    margin: 10px;
+    color: white;
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-about h3, 
+.footer-links h3, 
+.footer-contact h3, 
+.footer-social h3 {
+    text-decoration: underline;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #f39c12;
+}
+
+/* Footer Links */
+.footer-links ul, 
+.footer-social ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li, 
+.footer-social li {
+    margin-bottom: 8px;
+}
+
+
+.footer-links a, 
+.footer-social a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover, 
+.footer-social a:hover {
+    color: #ff9800;
+}
+
+.footer-about img {
+    max-width: 80px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.footer-contact p {
+    font-weight: 500;
+    color: white;
+}
+.footer-contact i {
+    color: #ff9800;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-contact i:hover {
+    color: white;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer-bottom {
+    margin-top: 10px;
+    font-size: 14px;
+    color: white;
+}
+/* Back to Top */
+#backToTop {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background: var(--accent);
+    color: var(--primary);
+    border: none;
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    font-size: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+#backToTop:hover {
+    background: var(--primary);
+    color: var(--accent);
+}
+

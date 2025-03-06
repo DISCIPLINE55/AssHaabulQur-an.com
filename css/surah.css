@@ -1,0 +1,584 @@
+/* Global Styles */
+:root {
+    --primary: #008080;
+    --accent: #ff9800;
+    --background: #eef7f8;
+    --dark-background: #121212;
+    --dark-text: #EAEAEA;
+    --text-color: #333;
+    --border-radius: 8px;
+    --transition: 0.3s ease-in-out;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: var(--dark-background);
+    color: var(--dark-text);
+}
+.dark-mode .navbar, 
+.dark-mode .audio-player-container, 
+.dark-mode .footer-container {
+    background: #1C1C1C;
+}
+.dark-mode a, 
+.dark-mode p, 
+.dark-mode h1, 
+.dark-mode h2, 
+.dark-mode h3 {
+    color: var(--dark-text);
+}
+.dark-mode .btn {
+    background: var(--accent);
+    color: var(--primary);
+}
+.dark-mode .btn:hover {
+    background: var(--primary);
+    color: var(--accent);
+}
+
+/* General */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--background);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    transition: var(--transition);
+}
+h1, h2, h3 {
+    font-weight: 600;
+    color: var(--primary);
+}
+a {
+    text-decoration: none;
+    color: var(--primary);
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+button {
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: #009688;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+}
+
+/* Logo */
+.navbar .logo img {
+    max-height: 50px;
+    width: auto;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+}
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+/* Navbar Links */
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.3s, transform 0.3s;
+}
+.nav-links li {
+    margin-left: 2rem;
+}
+.nav-links a:hover {
+    color: #f39c12;
+    transform: translateY(-3px);
+}
+
+/* Mobile Menu */
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* Responsive Navbar */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #1c1c1c;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        margin: 10px 0;
+    }
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Surah Section */
+.audio-player-container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    width: 100%;
+    max-width: 500px;
+}
+.audio-player-container select {
+    padding: 10px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--primary);
+    margin-top: 5px;
+    margin: auto;
+    display: block;
+    width: 100%;
+}
+
+.album-art {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 10px 0;
+}
+
+/* Player Controls */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+.control-btn {
+    background: var(--primary);
+    color: #f39c12;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    transition: var(--transition);
+}
+.control-btn:hover {
+    background: var(--accent);
+    color: var(--primary);
+}
+
+
+/* Button Container */
+.bottom-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+/* General Button Styling */
+.icon-btn {
+    background: var(--primary);
+    color: #f39c12;
+    font-size: 18px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover Effect */
+.icon-btn:hover {
+    background: #e67e22; /* Slightly darker orange */
+}
+
+/* Active (Clicked) Effect */
+.icon-btn:active {
+    transform: scale(0.95);
+}
+
+/* Loop Active State */
+#loopBtn.active {
+    background: #27ae60; /* Green when active */
+}
+
+/* Responsive Button Sizing */
+@media (max-width: 600px) {
+    .icon-btn {
+        font-size: 16px;
+        padding: 6px 10px;
+    }
+}
+
+/* Progress & Volume Control Styles */
+.progress-container, .bottom-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* Time Display */
+#currentTime, #duration {
+    color: #f39c12;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Progress Bar Styling */
+#progressBar {
+    width: 100%;
+    max-width: 300px;
+    height: 5px;
+    appearance: none;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Progress Bar Thumb */
+#progressBar::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #f39c12;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#progressBar::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: #f39c12;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Volume Control Styling */
+#volumeControl {
+    width: 80px;
+    appearance: none;
+    background: #ddd;
+    height: 5px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Volume Control Thumb */
+#volumeControl::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #f39c12;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#volumeControl::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: #f39c12;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Verse Section */
+#verseContainer {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px;
+    text-align: center;
+    background: var(--primary);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#verseContainer h1, h2 {
+    color: #f39c12;
+    margin-bottom: 10px;
+}
+#verseList li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+#verseList li:last-child {
+    border-bottom: none;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+.btn-small {
+    background: var(--primary);
+    color: white;
+    padding: 5px 8px;
+    border-radius: var(--border-radius);
+    border: none;
+    font-size: 14px;
+    transition: var(--transition);
+}
+.btn-small:hover {
+    background: var(--accent);
+    color: var(--primary);
+}
+
+/* Tafsir Section */
+#tafsirSection {
+    margin: 10px;
+    padding: 15px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+#tafsirSection h2 {
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+#tafsirContent {
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--primary);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#tafsirSelect {
+    width: 100%;
+    padding: 8px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--primary);
+}
+
+/* Scrollable Sections */
+#verseContainer, 
+#tafsirContent, 
+#fullSurahSection {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Custom Scrollbar for Modern Browsers */
+::-webkit-scrollbar {
+    width: 8px; /* Scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+    background: #ff9800; /* Light background */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff9800; /* Blue scrollbar */
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff9800; 
+}
+
+/* Firefox Custom Scrollbar */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #ff9800 #0b0000;
+}
+
+/* Ensure smooth scrolling for entire page */
+html, body {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+}
+
+/* Footer */
+.footer-container {
+    background: var(--primary);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.footer-about, 
+.footer-links, 
+.footer-contact, 
+.footer-social {
+    align-self: start;
+    margin: 10px;
+    color: white;
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-about h3, 
+.footer-links h3, 
+.footer-contact h3, 
+.footer-social h3 {
+    text-decoration: underline;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #f39c12;
+}
+
+/* Footer Links */
+.footer-links ul, 
+.footer-social ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li, 
+.footer-social li {
+    margin-bottom: 8px;
+}
+
+
+.footer-links a, 
+.footer-social a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover, 
+.footer-social a:hover {
+    color: #ff9800;
+}
+
+.footer-about img {
+    max-width: 80px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.footer-contact p {
+    font-weight: 500;
+    color: white;
+}
+.footer-contact i {
+    color: #ff9800;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-contact i:hover {
+    color: white;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer-bottom {
+    margin-top: 10px;
+    font-size: 14px;
+    color: white;
+}
+/* Back to Top */
+#backToTop {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background: var(--accent);
+    color: var(--primary);
+    border: none;
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    font-size: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+#backToTop:hover {
+    background: var(--primary);
+    color: var(--accent);
+}
+
+/* Extra Small Screens */
+@media (max-width: 480px) {
+    .controls {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+
+/* Ensure all sections scale properly on small screens */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 3%;
+    }
+
+    .nav-links {
+        width: 100%;
+        text-align: center;
+    }
+
+    .audio-player-container,
+    #verseContainer,
+    #tafsirSection,
+    .footer-container {
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    .footer-about, 
+    .footer-links, 
+    .footer-contact, 
+    .footer-social {
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+/* Fine-tune for extra small devices */
+@media (max-width: 480px) {
+    .nav-links {
+        flex-direction: column;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
