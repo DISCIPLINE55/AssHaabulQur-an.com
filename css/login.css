@@ -271,6 +271,12 @@ button:hover {
     color: #ff9800;
 }
 
+.footer-bottom {
+    margin-top: 5px;
+    font-size: 14px;
+    color: white;
+}
+
 /* Responsive Footer */
 @media (max-width: 480px) {
     .footer-container {

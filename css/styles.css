@@ -961,26 +961,6 @@ html, body {
 }
 
 
-/* Floating Button *
-#feedbackBtn {
-    position: fixed;
-    bottom: 60px;
-    right: 20px;
-    background-color: #f7b721;
-    color: black;
-    border: none;
-    padding: 5px 5px;
-    border-radius: 100%;
-    font-size: 36px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-}
-
-#feedbackBtn:hover {
-    background-color: #1da851;
-}
-*/
 /* Modal Styling */
 .modal {
     display: none;
@@ -1013,96 +993,105 @@ html, body {
     cursor: pointer;
 }
 
-
-/*
-
-.modal {
-    display: none;
+/* Feedback Button */
+#ctaFeedbackBtn {
     position: fixed;
-    z-index: 1;
+    bottom: 20px;
+    right: 20px;
+    background-color: #1C6758; /* Deep Green */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease-in-out;
+}
+
+#ctaFeedbackBtn:hover {
+    background-color: #155A4D; /* Darker Green */
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
+/* Show modal when active */
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal Content */
 .modal-content {
-    background-color: white;
+    background: white;
     padding: 20px;
+    width: 90%;
+    max-width: 400px;
     border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     text-align: center;
-    width: 350px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
 }
 
-.close-btn {
+/* Close Button */
+.close {
     float: right;
-    font-size: 24px;
+    font-size: 22px;
     cursor: pointer;
 }
 
-button {
-    margin: 10px;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+.close:hover {
+    color: red;
 }
 
-#modalConfirm {
-    background-color: #1C6758;
-    color: white;
-}
-
-#modalCancel {
-    background-color: #FFD700;
-    color: black;
-}
-*/
-
-
-/* Form Styling */
-#feedbackModal {
-    background: linear-gradient(to bottom, #eef7f8, #d4efdf);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    width: 100%;
-    margin: 0 auto;
-    z-index: 1000;
-
-}
-
-#feedbackForm input, #feedbackForm textarea {
+/* Form Inputs */
+#feedbackForm input,
+#feedbackForm textarea {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
+    margin-top: 8px;
+    border: 1px solid #ddd;
     border-radius: 5px;
+    font-size: 16px;
 }
 
-#feedbackForm button {
-    background-color: #ff9800;
-    color: white;
-    border: none;
+/* Submit Button */
+#sendBtn {
+    background: #FFD700; /* Gold */
+    color: black;
     padding: 10px 15px;
-    border-radius: 5px;
+    border: none;
     cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+    margin-top: 10px;
 }
 
-#feedbackForm button:hover {
-    background-color: #1da851;
+#sendBtn:hover {
+    background: #E6C200; /* Darker Gold */
 }
 
-
+/* Loading Spinner */
 .spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-left-color: #22c55e; /* Green spinner */
+    border: 4px solid #ddd;
+    border-top: 4px solid #1C6758; /* Deep Green */
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -1110,23 +1099,51 @@ button {
     display: inline-block;
 }
 
-@keyframes spin {
+/* Animations */
+@keyframes fadeIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
     to {
-        transform: rotate(360deg);
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
-
-
-/* Responsive surah */
-
-
-/* Apply Custom Scrollbar to Specific Containers 
-#verseContainer, 
-#tafsirContent, 
-#fullSurahSection {
-    max-height: 800px;  /*Set a fixed height to allow scrolling 
-    overflow-y: auto;
-    padding-right: 10px;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
-*/
+
+
+
+/* CTA Button */
+#ctaFeedbackBtn {
+    background-color: #1C6758; /* Deep Green */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-bottom: 50px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#ctaFeedbackBtn:hover {
+    background-color: #155A4D; /* Darker Green */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cta-section p {
+        font-size: 16px;
+    }
+
+    #ctaFeedbackBtn {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}

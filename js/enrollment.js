@@ -1,3 +1,12 @@
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".enroll-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            const courseName = this.parentElement.id;
+            enrollCourse(courseName);
+        });
+    });
+});
+
 function enrollCourse(courseName) {
     let enrolledCourses = JSON.parse(localStorage.getItem("enrolledCourses")) || [];
 

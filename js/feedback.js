@@ -1,70 +1,50 @@
-// Get elements
-const feedbackBtn = document.getElementById("ctaFeedbackBtn");
-const feedbackModal = document.getElementById("feedbackModal");
-const closeModal = document.querySelector(".close");
-const feedbackForm = document.getElementById("feedbackForm");
-const confirmationMessage = document.getElementById("confirmationMessage");
-const loadingMessage = document.getElementById("loadingMessage");
+document.addEventListener("DOMContentLoaded", function () {
+    const feedbackBtn = document.getElementById("ctaFeedbackBtn");
+    const feedbackModal = document.getElementById("feedbackModal");
+    const closeBtn = document.querySelector(".close");
+    const feedbackForm = document.getElementById("feedbackForm");
+    const loadingMessage = document.getElementById("loadingMessage");
+    const confirmationMessage = document.getElementById("confirmationMessage");
 
-// Show modal when feedback button is clicked
-feedbackBtn.addEventListener("click", () => {
-    feedbackModal.style.display = "flex";
-});
+    // Set Button Text
+    feedbackBtn.textContent = "Give Feedback";
 
-// Close modal when close button is clicked
-closeModal.addEventListener("click", () => {
-    feedbackModal.style.display = "none";
-});
+    // Show Modal
+    feedbackBtn.addEventListener("click", function () {
+        feedbackModal.classList.add("show");
+    });
 
-// Close modal when clicking outside the content
-window.addEventListener("click", (e) => {
-    if (e.target === feedbackModal) {
-        feedbackModal.style.display = "none";
-    }
-});
+    // Hide Modal
+    closeBtn.addEventListener("click", function () {
+        feedbackModal.classList.remove("show");
+    });
 
-// Handle form submission
-feedbackForm.addEventListener("submit", async function (e) {
-    e.preventDefault(); // Prevent default form submission
+    // Submit Form with Loading Effect
+    feedbackForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent default form submission
 
-    // Show loading message
-    loadingMessage.style.display = "block";
-    confirmationMessage.style.display = "none"; // Hide success message in case it's still visible
+        // Show loading message
+        loadingMessage.style.display = "block";
 
-    const formData = new FormData(feedbackForm);
-
-    try {
-        const response = await fetch(feedbackForm.action, {
-            method: "POST",
-            body: formData,
-            headers: {
-                Accept: "application/json"
-            }
-        });
-
+        // Simulate form submission delay
         setTimeout(() => {
-            loadingMessage.style.display = "none"; // Hide loading message
+            loadingMessage.style.display = "none";
+            confirmationMessage.textContent = "✅ Thank you for your feedback!";
+            confirmationMessage.style.display = "block";
 
-            if (response.ok) {
-                confirmationMessage.textContent = "✅ Feedback sent successfully!";
-                confirmationMessage.style.display = "block";
-                confirmationMessage.style.color = "green";
-                feedbackForm.reset(); // Reset form fields
-                
-                // Redirect to homepage after 2 seconds
-                setTimeout(() => {
-                    window.location.href = "index.html"; // Change this to your homepage
-                }, 2000);
-            } else {
-                confirmationMessage.textContent = "❌ Failed to send feedback. Try again.";
-                confirmationMessage.style.display = "block";
-                confirmationMessage.style.color = "red";
-            }
-        }, 5000); // Simulate loading for 5 seconds
-    } catch (error) {
-        loadingMessage.style.display = "none"; // Hide loading
-        confirmationMessage.textContent = "⚠️ Network error. Please try again.";
-        confirmationMessage.style.display = "block";
-        confirmationMessage.style.color = "red";
-    }
+            // Reset form after a delay
+            setTimeout(() => {
+                feedbackForm.reset();
+                feedbackModal.classList.remove("show");
+                confirmationMessage.style.display = "none";
+            }, 2000);
+        }, 2000);
+    });
+
+    // Close modal when clicking outside content
+    window.addEventListener("click", function (event) {
+        if (event.target === feedbackModal) {
+            feedbackModal.classList.remove("show");
+        }
+    });
 });

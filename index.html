@@ -4,7 +4,7 @@
 <head>
     <!-- Character Encoding -->
     <meta charset="UTF-8">
-    
+
     <!-- Responsive Design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,27 +16,31 @@
     <!-- Open Graph (OG) Meta Tags for Social Sharing -->
     <meta property="og:title" content="Ass-haabul-Qura'n">
     <meta property="og:description" content="Learn Quran with Tajweed, Tafsir, and Islamic courses online.">
-    <meta property="og:image" content="https://ass-haabul-qur-ancom.vercel.app//images/og-image.jpg">
+    <meta property="og:image" content="https://ass-haabul-qur-ancom.vercel.app/images/og-image.jpg">
     <meta property="og:url" content="https://ass-haabul-qur-ancom.vercel.app/">
     <meta property="og:type" content="website">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Ass-haabul-Qura'n">
     <meta name="twitter:description" content="Learn Quran online with Tajweed, Tafsir, and Islamic courses.">
-    <meta name="twitter:image" content="https://ass-haabul-qur-ancom.vercel.app//images/twitter-image.jpg">
+    <meta name="twitter:image" content="https://ass-haabul-qur-ancom.vercel.app/images/twitter-image.jpg">
 
     <!-- Security Meta Tags -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://yourwebsite.com;">
-    
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self'; 
+        script-src 'self' https://cdn.jsdelivr.net 'nonce-xyz123'; 
+        style-src 'self' https://fonts.googleapis.com; 
+        img-src 'self' data: https://ass-haabul-qur-ancom.vercel.app;"> 
+
     <!-- Multilingual Support -->
-    <link rel="alternate" hreflang="en" href="https://ass-haabul-qur-ancom.vercel.app//en">
-    <link rel="alternate" hreflang="ar" href="https://ass-haabul-qur-ancom.vercel.app//ar">
-    <link rel="alternate" hreflang="fr" href="https://ass-haabul-qur-ancom.vercel.app//fr">
-    <link rel="alternate" hreflang="ha" href="https://ass-haabul-qur-ancom.vercel.app//ha">
-    <link rel="alternate" hreflang="yo" href="https://ass-haabul-qur-ancom.vercel.app//yo">
-    
+    <link rel="alternate" hreflang="en" href="https://ass-haabul-qur-ancom.vercel.app/en">
+    <link rel="alternate" hreflang="ar" href="https://ass-haabul-qur-ancom.vercel.app/ar">
+    <link rel="alternate" hreflang="fr" href="https://ass-haabul-qur-ancom.vercel.app/fr">
+    <link rel="alternate" hreflang="ha" href="https://ass-haabul-qur-ancom.vercel.app/ha">
+    <link rel="alternate" hreflang="yo" href="https://ass-haabul-qur-ancom.vercel.app/yo">
+
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
@@ -46,24 +50,27 @@
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+   
     <!-- Performance Optimizations -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="preload" as="style" href="/css/styles.css">
     <link rel="prefetch" href="/js/script.js">
+    
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
 
-    <!-- Scripts -->
-    <script src="/js/script.js" defer></script>
-    <script src="/js/courses.js" defer></script>
-    <script src="/js/enrollment.js" defer></script>
-    <script src="/js/scriptlogin.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Scripts (Properly deferred for better performance) -->
+    <script nonce="xyz123" defer src="/js/script.js"></script>
+    <script nonce="xyz123" defer src="/js/enrollment.js"></script>
+    <script nonce="xyz123" defer src="/js/login.js"></script>
+    <script nonce="xyz123" defer src="/js/feedback.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <title>Ass-haabul-Qura'n - Learn Quran Online</title>
+
 </head>
 <body>
     <header>
@@ -91,7 +98,6 @@
             <button id="toggleTheme">🌙</button>
             <button class="menu-toggle" id="menuToggle">☰</button>
         </nav>
-        <p id="noResults" style="display:none; text-align:center; color:red;">No results found.</p>
     </header>
     
     
@@ -99,15 +105,10 @@
         
     </section>
     <!-- CTA Section -->
-    <div style="text-align: center; margin-top: 5px; background-color: #f1f1f1; padding: 20px;">
-        <p style="font-size: 20px; font-weight: bold; color: #333;">
-            🌟 We value your feedback! Let us know how we can improve your experience with ASS-HAABUL-QURAN. 💬 <br>
-            Click the button below to share your thoughts with us!
-        </p>
-        <button id="ctaFeedbackBtn" style="background-color: #009688; color: white; border: none; padding: 10px 15px; border-radius: 5px; font-size: 16px; cursor: pointer;">
-            Share Your Feedback
-        </button>
+    <div class="cta-section">
+        <button id="ctaFeedbackBtn">Share Your Feedback</button>
     </div>
+
 
      <div id="dailyAyahSection">
             <h2>📜 Daily Ayah</h2>
@@ -131,21 +132,21 @@
                 <img src="images/good.png" alt="Tajweed Course" loading="lazy">
                 <h3>Tajweed Mastery</h3>
                 <p>Learn the rules of proper Quranic recitation with Tajweed.</p>
-                <button class="enroll-btn" onclick="enrollCourse('tajweed')">Enroll Now</button>
+                <button class="enroll-btn">Enroll Now</button>
             </div>
 
             <div class="course" id="memorization">
                 <img src="images/img1.png" alt="Memorization Course" loading="lazy">
                 <h3>Quran Memorization</h3>
                 <p>Step-by-step guidance to help you memorize the Quran easily.</p>
-                <button class="enroll-btn" onclick="enrollCourse('memorization')">Enroll Now</button>
+                <button class="enroll-btn">Enroll Now</button>
             </div>
 
             <div class="course" id="tafseer">
                 <img src="images/allah.png" alt="Tafseer Course" loading="lazy">
                 <h3>Tafseer Quran</h3>
                 <p>Deepen your understanding of the Quran with Tafseer lessons.</p>
-                <button class="enroll-btn" onclick="enrollCourse('tafseer')">Enroll Now</button>
+                <button class="enroll-btn">Enroll Now</button>
             </div>
         </div>
     </section>
@@ -375,7 +376,9 @@
                     </div> 
                 </div>
     </section>
-
+    <button id="backToTop">🔝</button>
+    
+    <!-- Footer -->
     <footer id="about">
         <div class="footer-container">
             <div class="footer-about">
@@ -402,24 +405,18 @@
             <div class="footer-social">
                 <h3>Connect with us</h3>
                 <ul>
-                    <li><a href="https://facebook.com/ashaabulquran" target="_blank"><i class="fa-brands fa-facebook"></i>Facebook</a></li>
-                    <li><a href="https://twitter.com/ashaabulquran" target="_blank"><i class="fa-brands fa-x-twitter"></i></i>Twitter</a></li>
-                    <li><a href="https://instagram.com/ashaabulquran" target="_blank"><i class="fa-brands fa-instagram">Instagram</a></li>
-                    <li><a href="https://youtube.com/ashaabulquran" target="_blank"><i class="fa-brands fa-youtube"></i>YouTube</a></li>
-                    <li><a href="https://chat.whatsapp.com/Drx3c72aeCIDWM73PpcGvw" target="_blank"
-                        class="social-icon">
-                        <i class="fa-brands fa-whatsapp">WhatsApp</i></li>
+                    <li><a href="https://facebook.com/ashaabulquran" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+                    <li><a href="https://twitter.com/ashaabulquran" target="_blank"><i class="fa-brands fa-x-twitter"></i> Twitter</a></li>
+                    <li><a href="https://instagram.com/ashaabulquran" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a href="https://youtube.com/ashaabulquran" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+                    <li><a href="https://chat.whatsapp.com/Drx3c72aeCIDWM73PpcGvw" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
                 </ul>
             </div>
+            
             <div class="footer-bottom">
                 <p>© 2025 Ass-haabul-Qura'n. All rights reserved.</p>
             </div>
-        </div>        
-    </footer> 
-    <button id="backToTop">🔝</button>
-    <div id="modal-container"></div>
-    <script src="/js/feedback.js"></script>
-    <script src="/js/scriptlogin.js"></script>
-
+        </div>
+    </footer>        
  </body>    
 </html>
